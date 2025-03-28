@@ -53,12 +53,7 @@ export const Card: FC<Card> = ({ product }) => {
             <p className={styles.paragraph}>{product?.weight} </p>
           </div>
         </div>
-        <div className={styles.listItem}>
-          <div className={styles.infoRow}>
-            <p className={styles.paragraph}>{"Availability:"}</p>{" "}
-            <p className={styles.paragraph}>{product?.available} </p>
-          </div>
-        </div>
+
         {/* <li className={styles.listItem}>
             <div className={styles.infoRow}>
               <p className={styles.paragraph}>{"Brand:"}</p>{" "}
