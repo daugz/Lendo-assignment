@@ -34,6 +34,12 @@ function App() {
   }, []);
   return (
     <div className={styles.body}>
+      <header className={styles.header}>
+        <h1 className={styles.h1}>Lendo</h1>
+        <a className={styles.shoppingCartLink}>
+          <div className={styles.shoppingCartImage}></div>
+        </a>
+      </header>
       <Button text="Add" />
     </div>
   );
