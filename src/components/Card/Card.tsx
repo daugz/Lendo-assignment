@@ -1,6 +1,7 @@
 import { type FC } from "react";
 import { type Product } from "../../App";
 import styles from "./card.module.css";
+import Button from "../Button";
 
 type Card = {
   product: Product;
@@ -103,6 +104,7 @@ export const Card: FC<Card> = ({ product }) => {
             })}
           </li>
         </ul>
+        <Button text="Add to cart" />
       </div>
     </li>
   );

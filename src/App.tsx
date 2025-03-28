@@ -53,7 +53,6 @@ function App() {
       <div className={styles.productListContainer}>
         {inventory?.length > 0 && <ProductList products={inventory} />}
       </div>
-      <Button text="Add" />
     </div>
   );
 }
