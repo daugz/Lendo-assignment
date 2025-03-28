@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import styles from "./App.module.css";
+import Button from "./components/Button";
 import { ProductList } from "./components/ProductList/ProductList";
 
 export type Product = {
