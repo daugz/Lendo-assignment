@@ -35,6 +35,9 @@
 
 .productListContainer {
   display: flex;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 30px;
 }
 
 .shoppingCartLink {
