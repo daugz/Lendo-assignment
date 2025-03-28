@@ -37,7 +37,7 @@ export const Card: FC<Card> = ({ product }) => {
     <li key={product?.id} className={styles.card}>
       <div className={styles.listContainer}>
         <div className={styles.imageWrapper}>
-          <img className={styles.image} src={findProductImage()}></img>
+          <img className={styles.image} src={findProductImage()} />
         </div>
         <h2 className={styles.h2}>{product?.name}</h2>
 
