@@ -2,6 +2,7 @@ import { type FC } from "react";
 import { type Product } from "../../App";
 import styles from "./card.module.css";
 import Button from "../Buttons/Button";
+import { Available } from "../Availability/Availability";
 
 type Card = {
   product: Product;
@@ -41,6 +42,7 @@ export const Card: FC<Card> = ({ product }) => {
 
         <h2 className={styles.h2}>{product?.name}</h2>
 
+        <Available Available={product.available} />
         <div className={styles.listItem}>
           <div className={styles.infoRow}>
             <p className={styles.paragraph}>{product?.price + " kr"} </p>
