@@ -5,6 +5,19 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+.headerContainer {
+  display: flex;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .headingLink {
   display: flex;
   text-decoration: none;

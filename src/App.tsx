@@ -38,10 +38,12 @@ function App() {
   return (
     <div className={styles.body}>
       <header className={styles.header}>
+        <div className={styles.headerContainer}>
         <h1 className={styles.h1}>Lendo</h1>
         <a className={styles.shoppingCartLink}>
           <div className={styles.shoppingCartImage}></div>
         </a>
+        </div>
       </header>
       <div className={styles.productListContainer}>
         {inventory?.length > 0 && <ProductList products={inventory} />}
