@@ -47,12 +47,6 @@ export const Card: FC<Card> = ({ product }) => {
             <p className={styles.paragraph}>{product?.price + " kr"} </p>
           </div>
         </div>
-        <div className={styles.listItem}>
-          <div className={styles.infoRow}>
-            <p className={styles.paragraph}>{"Weight:"}</p>{" "}
-            <p className={styles.paragraph}>{product?.weight} </p>
-          </div>
-        </div>
 
         {/* <li className={styles.listItem}>
             <div className={styles.infoRow}>
