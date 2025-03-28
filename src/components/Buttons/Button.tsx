@@ -6,7 +6,7 @@ type Button = {
 };
 
 const Button: FC<Button> = ({ text }) => {
-  return <div className={style.button}>{text}</div>;
+  return <button className={style.button}>{text}</button>;
 };
 
 export default Button;
