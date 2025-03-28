@@ -21,6 +21,8 @@ export type Product = {
 function App() {
   const [inventory, setInventory] = useState<Product[] | []>([]);
 
+  const [shoppingCart, setShoppingCart] = useState(null);
+
   const fetchInventory = async () => {
     const inventoryResponse = await fetch("./inventory.json");
     const inventoryData = await inventoryResponse.json();
@@ -41,11 +43,11 @@ function App() {
       <header className={styles.header}>
         <div className={styles.headerContainer}>
           <a href="/" className={styles.headingLink}>
-        <h1 className={styles.h1}>Lendo</h1>
+            <h1 className={styles.h1}>Lendo</h1>
           </a>
-        <a className={styles.shoppingCartLink}>
-          <div className={styles.shoppingCartImage}></div>
-        </a>
+          <a className={styles.shoppingCartLink}>
+            <div className={styles.shoppingCartImage}></div>
+          </a>
         </div>
       </header>
       <div className={styles.productListContainer}>
