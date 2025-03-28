@@ -104,7 +104,7 @@ export const Card: FC<Card> = ({ product }) => {
             })}
           </li> */}
         </ul>
-        <Button text="Add to cart" />
+        <Button text="More info" />
       </div>
     </li>
   );
