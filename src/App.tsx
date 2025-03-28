@@ -34,7 +34,7 @@ function App() {
   }, []);
   return (
     <div className={styles.body}>
-      <header className={styles.header}></header>
+      <Button text="Add" />
     </div>
   );
 }
