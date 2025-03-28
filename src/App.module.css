@@ -1,34 +1,3 @@
-.header {
-  display: flex;
-  width: 100%;
-  background-color: #29c466;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.headerContainer {
-  display: flex;
-  width: 100%;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.headingLink {
-  display: flex;
-  text-decoration: none;
-}
-
-.h1 {
-  color: white;
-}
-
 .body {
   min-height: 100vh;
 }
@@ -38,16 +7,4 @@
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 30px;
-}
-
-.shoppingCartLink {
-  display: flex;
-}
-.shoppingCartImage {
-  display: flex;
-  width: 40px;
-  height: 40px;
-  background-image: url("./assets/shopping_cart.png");
-  background-repeat: no-repeat;
-  background-size: contain;
 }

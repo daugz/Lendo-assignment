@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import styles from "./App.module.css";
-import Button from "./components/Button";
 import { ProductList } from "./components/ProductList/ProductList";
+import { Header } from "./components/Header/Header";
 
 export type Product = {
   id: number;
@@ -21,7 +21,7 @@ export type Product = {
 function App() {
   const [inventory, setInventory] = useState<Product[] | []>([]);
 
-  const [shoppingCart, setShoppingCart] = useState(null);
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   const fetchInventory = async () => {
     const inventoryResponse = await fetch("./inventory.json");
@@ -40,16 +40,7 @@ function App() {
 
   return (
     <div>
-      <header className={styles.header}>
-        <div className={styles.headerContainer}>
-          <a href="/" className={styles.headingLink}>
-            <img src={"./Lendo-image.svg"} />
-          </a>
-          <a className={styles.shoppingCartLink}>
-            <div className={styles.shoppingCartImage}></div>
-          </a>
-        </div>
-      </header>
+      <Header />
       <div className={styles.productListContainer}>
         {inventory?.length > 0 && <ProductList products={inventory} />}
       </div>
