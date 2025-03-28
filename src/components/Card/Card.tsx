@@ -7,9 +7,34 @@ type Card = {
 };
 
 export const Card: FC<Card> = ({ product }) => {
+  const findProductImage = (): string => {
+    const assetProductsUrl = "/Products";
+
+    const lowerCaseProductName = product.name.toLowerCase();
+    if (lowerCaseProductName === "philips hue bulb")
+      return `${assetProductsUrl}/philips-hue.png`;
+    if (lowerCaseProductName === "trådfria lampor")
+      return `${assetProductsUrl}/tradfri.png`;
+    if (lowerCaseProductName === "playstation 4")
+      return `${assetProductsUrl}/playstation-4.png`;
+    if (lowerCaseProductName === "nintendo switch")
+      return `${assetProductsUrl}/nintendo-switch.png`;
+    if (lowerCaseProductName === "bluetooth speaker")
+      return `${assetProductsUrl}/bluetooth-speaker.png`;
+    if (lowerCaseProductName === "electrical toothbrush")
+      return `${assetProductsUrl}/electrical-toothbrush.png`;
+    if (lowerCaseProductName === "samsung 40 uhd smart tv")
+      return `${assetProductsUrl}/smart-uhd-tv.png`;
+    if (lowerCaseProductName === "benq gw2765he eye-care")
+      return `${assetProductsUrl}/benq-screen.png`;
+
+    return "";
+  };
+
   return (
     <li key={product?.id} className={styles.card}>
       <h2 className={styles.h2}>{product?.name}</h2>
+      <img className={styles.image} src={findProductImage()}></img>
 
       <ul className={styles.infoList}>
         <li className={styles.listItem}>
