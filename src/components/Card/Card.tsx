@@ -44,22 +44,26 @@ export const Card: FC<Card> = ({ product }) => {
         <ul className={styles.infoList}>
           <li className={styles.listItem}>
             <div className={styles.infoRow}>
-              <p>{"Price:"}</p> <p>{product?.price} </p>
+              <p className={styles.paragraph}>{"Price:"}</p>{" "}
+              <p className={styles.paragraph}>{product?.price} </p>
             </div>
           </li>
           <li className={styles.listItem}>
             <div className={styles.infoRow}>
-              <p>{"Weight:"}</p> <p>{product?.weight} </p>
+              <p className={styles.paragraph}>{"Weight:"}</p>{" "}
+              <p className={styles.paragraph}>{product?.weight} </p>
             </div>
           </li>
           <li className={styles.listItem}>
             <div className={styles.infoRow}>
-              <p>{"Availability:"}</p> <p>{product?.available} </p>
+              <p className={styles.paragraph}>{"Availability:"}</p>{" "}
+              <p className={styles.paragraph}>{product?.available} </p>
             </div>
           </li>
           <li className={styles.listItem}>
             <div className={styles.infoRow}>
-              <p>{"Brand:"}</p> <p>{product?.brand} </p>
+              <p className={styles.paragraph}>{"Brand:"}</p>{" "}
+              <p className={styles.paragraph}>{product?.brand} </p>
             </div>
           </li>
           <li className={styles.listItem}>
@@ -89,16 +93,14 @@ export const Card: FC<Card> = ({ product }) => {
                   );
                 } else return <></>;
               })}
-
-              {"Power:"}
             </div>
             {product?.options.map((option) => {
               return (
                 <div className={""}>
-                  <p>{option.color}</p>
-                  <p>{option.power}</p>
-                  <p>{option.quantity}</p>
-                  <p>{option.storage}</p>
+                  <p className={styles.paragraph}>{option.color}</p>
+                  <p className={styles.paragraph}>{option.power}</p>
+                  <p className={styles.paragraph}>{option.quantity}</p>
+                  <p className={styles.paragraph}>{option.storage}</p>
                 </div>
               );
             })}
