@@ -43,7 +43,7 @@ function App() {
       <header className={styles.header}>
         <div className={styles.headerContainer}>
           <a href="/" className={styles.headingLink}>
-            <h1 className={styles.h1}>Lendo</h1>
+            <img src={"./Lendo-image.svg"} />
           </a>
           <a className={styles.shoppingCartLink}>
             <div className={styles.shoppingCartImage}></div>
