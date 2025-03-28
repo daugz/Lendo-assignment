@@ -18,6 +18,11 @@
 .body {
   min-height: 100vh;
 }
+
+.productListContainer {
+  display: flex;
+}
+
 .shoppingCartLink {
   display: flex;
 }
