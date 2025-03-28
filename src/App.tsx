@@ -39,7 +39,9 @@ function App() {
     <div className={styles.body}>
       <header className={styles.header}>
         <div className={styles.headerContainer}>
+          <a href="/" className={styles.headingLink}>
         <h1 className={styles.h1}>Lendo</h1>
+          </a>
         <a className={styles.shoppingCartLink}>
           <div className={styles.shoppingCartImage}></div>
         </a>
