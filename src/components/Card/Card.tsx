@@ -1,6 +1,12 @@
+import { type FC } from "react";
+import { type Product } from "../../App";
 import styles from "./card.module.css";
 
-export const Card = ({ product }) => {
+type Card = {
+  product: Product;
+};
+
+export const Card: FC<Card> = ({ product }) => {
   return (
     <li key={product?.id} className={styles.card}>
       <h2 className={styles.h2}>{product?.name}</h2>
