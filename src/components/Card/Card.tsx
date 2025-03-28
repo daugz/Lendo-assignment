@@ -35,17 +35,15 @@ export const Card: FC<Card> = ({ product }) => {
   return (
     <li key={product?.id} className={styles.card}>
       <div className={styles.listContainer}>
-        <h2 className={styles.h2}>{product?.name}</h2>
-
         <div className={styles.imageWrapper}>
           <img className={styles.image} src={findProductImage()}></img>
         </div>
 
+        <h2 className={styles.h2}>{product?.name}</h2>
         <ul className={styles.infoList}>
           <li className={styles.listItem}>
             <div className={styles.infoRow}>
-              <p className={styles.paragraph}>{"Price:"}</p>{" "}
-              <p className={styles.paragraph}>{product?.price} </p>
+              <p className={styles.paragraph}>{product?.price + " kr"} </p>
             </div>
           </li>
           <li className={styles.listItem}>
@@ -60,7 +58,7 @@ export const Card: FC<Card> = ({ product }) => {
               <p className={styles.paragraph}>{product?.available} </p>
             </div>
           </li>
-          <li className={styles.listItem}>
+          {/* <li className={styles.listItem}>
             <div className={styles.infoRow}>
               <p className={styles.paragraph}>{"Brand:"}</p>{" "}
               <p className={styles.paragraph}>{product?.brand} </p>
@@ -104,7 +102,7 @@ export const Card: FC<Card> = ({ product }) => {
                 </div>
               );
             })}
-          </li>
+          </li> */}
         </ul>
         <Button text="Add to cart" />
       </div>
