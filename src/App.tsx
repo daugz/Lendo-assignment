@@ -16,7 +16,7 @@ export type Product = {
   }[];
 };
 function App() {
-  const [inventory, setInventory] = useState([]);
+  const [inventory, setInventory] = useState<Product[] | []>([]);
 
   const fetchInventory = async () => {
     const inventoryResponse = await fetch("./inventory.json");
