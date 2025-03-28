@@ -35,8 +35,9 @@ function App() {
       console.error("Error when fetching inventory", error);
     }
   }, []);
+
   return (
-    <div className={styles.body}>
+    <div>
       <header className={styles.header}>
         <div className={styles.headerContainer}>
           <a href="/" className={styles.headingLink}>
