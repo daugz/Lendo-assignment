@@ -44,8 +44,8 @@
   width: 100%;
   height: 200px;
 }
-.infoList {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+
+.imageWrapper {
+  /* margin-left: 5px;
+  margin-right: 5px; */
 }
