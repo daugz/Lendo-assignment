@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Header cartCount={shoppingCart.length} />
       <div className={styles.productListContainer}>
         {inventory?.length > 0 && <ProductList products={inventory} />}
       </div>

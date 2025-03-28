@@ -31,6 +31,7 @@
 
 .shoppingCartLink {
   display: flex;
+  position: relative;
 }
 .shoppingCartImage {
   display: flex;
@@ -39,4 +40,18 @@
   background-image: url("./shopping_cart.png");
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.cartCount {
+  position: absolute;
+  left: 25px;
+  bottom: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  width: 25px;
+  height: 25px;
+  border-radius: 999px;
 }

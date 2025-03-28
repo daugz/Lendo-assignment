@@ -1,6 +1,11 @@
+import { type FC } from "react";
 import styles from "./Header.module.css";
 
-export const Header = () => {
+type Header = {
+  cartCount: number;
+};
+
+export const Header: FC<Header> = ({ cartCount }) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -8,6 +13,7 @@ export const Header = () => {
           <img src={"./Lendo-image.svg"} />
         </a>
         <a className={styles.shoppingCartLink}>
+          <span className={styles.cartCount}>{cartCount}</span>
           <div className={styles.shoppingCartImage}></div>
         </a>
       </div>
