@@ -1,0 +1,11 @@
+.list {
+  color: black;
+  display: flex;
+  background-color: green;
+}
+.listItem {
+  color: black;
+  display: flex;
+  width: 100%;
+  height: 100px;
+}

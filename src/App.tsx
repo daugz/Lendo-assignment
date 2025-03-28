@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 import styles from "./App.module.css";
+import { ProductList } from "./components/ProductList/ProductList";
+
 export type Product = {
   id: number;
   name: string;
@@ -40,6 +42,9 @@ function App() {
           <div className={styles.shoppingCartImage}></div>
         </a>
       </header>
+      <div className={styles.productListContainer}>
+        {inventory?.length > 0 && <ProductList products={inventory} />}
+      </div>
       <Button text="Add" />
     </div>
   );
