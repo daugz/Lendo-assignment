@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import { type Product } from "../../App";
 import styles from "./card.module.css";
-import Button from "../Button";
+import Button from "../Buttons/Button";
 
 type Card = {
   product: Product;
