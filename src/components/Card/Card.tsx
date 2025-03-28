@@ -39,7 +39,6 @@ export const Card: FC<Card> = ({ product }) => {
         <div className={styles.imageWrapper}>
           <img className={styles.image} src={findProductImage()}></img>
         </div>
-
         <h2 className={styles.h2}>{product?.name}</h2>
 
         <Available Available={product.available} />

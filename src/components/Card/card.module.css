@@ -3,6 +3,10 @@
   background-color: green;
   /* width: 50%; */
 }
+.h2 {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
 
 .infoRow {
   display: flex;
