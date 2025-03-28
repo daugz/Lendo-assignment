@@ -40,25 +40,25 @@ export const Card: FC<Card> = ({ product }) => {
         </div>
 
         <h2 className={styles.h2}>{product?.name}</h2>
-        <ul className={styles.infoList}>
-          <li className={styles.listItem}>
-            <div className={styles.infoRow}>
-              <p className={styles.paragraph}>{product?.price + " kr"} </p>
-            </div>
-          </li>
-          <li className={styles.listItem}>
-            <div className={styles.infoRow}>
-              <p className={styles.paragraph}>{"Weight:"}</p>{" "}
-              <p className={styles.paragraph}>{product?.weight} </p>
-            </div>
-          </li>
-          <li className={styles.listItem}>
-            <div className={styles.infoRow}>
-              <p className={styles.paragraph}>{"Availability:"}</p>{" "}
-              <p className={styles.paragraph}>{product?.available} </p>
-            </div>
-          </li>
-          {/* <li className={styles.listItem}>
+
+        <div className={styles.listItem}>
+          <div className={styles.infoRow}>
+            <p className={styles.paragraph}>{product?.price + " kr"} </p>
+          </div>
+        </div>
+        <div className={styles.listItem}>
+          <div className={styles.infoRow}>
+            <p className={styles.paragraph}>{"Weight:"}</p>{" "}
+            <p className={styles.paragraph}>{product?.weight} </p>
+          </div>
+        </div>
+        <div className={styles.listItem}>
+          <div className={styles.infoRow}>
+            <p className={styles.paragraph}>{"Availability:"}</p>{" "}
+            <p className={styles.paragraph}>{product?.available} </p>
+          </div>
+        </div>
+        {/* <li className={styles.listItem}>
             <div className={styles.infoRow}>
               <p className={styles.paragraph}>{"Brand:"}</p>{" "}
               <p className={styles.paragraph}>{product?.brand} </p>
@@ -103,7 +103,6 @@ export const Card: FC<Card> = ({ product }) => {
               );
             })}
           </li> */}
-        </ul>
         <Button text="More info" />
       </div>
     </li>
