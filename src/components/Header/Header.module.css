@@ -32,6 +32,7 @@
 .shoppingCartLink {
   display: flex;
   position: relative;
+  cursor: pointer;
 }
 .shoppingCartImage {
   display: flex;
