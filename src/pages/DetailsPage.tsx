@@ -60,16 +60,18 @@ export const DetailsPage = ({
           {productDetails?.brand}
         </div>
         <div>
-          {productDetails?.options.map((option) => {
+          {productDetails?.options.map((option, index) => {
             return (
-              <div>
+              <div key={index}>
                 <div>{option.color}</div>
                 <div>
                   {option?.power && (
                     <select>
                       {option?.power?.map((powerOption) => {
                         return (
-                          <option value={powerOption}>{powerOption}</option>
+                          <option key={powerOption} value={powerOption}>
+                            {powerOption}
+                          </option>
                         );
                       })}
                     </select>

@@ -10,7 +10,7 @@ export const ProductList: FC<{ products: Product[] }> = ({ products }) => {
     products && (
       <ol className={styles.orderedList}>
         {products.map((product: Product) => {
-          return product && <Card product={product} />;
+          return product && <Card key={product.id} product={product} />;
         })}
       </ol>
     )
