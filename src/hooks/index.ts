@@ -1,0 +1,1 @@
+export { useFetchInventory } from "./useFetchInventory";
