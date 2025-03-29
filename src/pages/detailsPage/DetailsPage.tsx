@@ -65,7 +65,7 @@ export const DetailsPage = ({
             return (
               <div key={index}>
                 {option.color && (
-                  <div>
+                  <div className={styles.colorDisplayContainer}>
                     {Array.isArray(option?.color) ? (
                       option.color.map((color) => {
                         return <ColorDisplay color={color} />;
