@@ -11,10 +11,12 @@ export const ColorDisplay: FC<{ color: string }> = ({ color }) => {
     else return null;
   };
 
+  const colorText = color[0].toUpperCase() + color.slice(1);
+
   return (
     <>
       <div className={`${styles.display} ${findColor(color)}`} />
-      <span>{color}</span>
+      <span className={styles.infoColorText}>{colorText}</span>
     </>
   );
 };
