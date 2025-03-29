@@ -1,5 +1,5 @@
 import { type FC } from "react";
-import { type Product } from "../../App";
+import { type Product } from "../../pages/App";
 import styles from "./card.module.css";
 import Button from "../Buttons/Button";
 import { Available } from "../Availability/Availability";
