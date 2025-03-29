@@ -1,12 +1,14 @@
-import { type Dispatch, type FC } from "react";
+import { SetStateAction, type Dispatch, type FC } from "react";
 import styles from "./colorDisplay.module.css";
-import { option } from "../../types";
+import { type option } from "../../types";
 
 export const ColorDisplay: FC<{
   option: option;
-  setOptionsDisplayed: Dispatch.SetStateAction<any>;
-}> = ({ option, setOptionsDisplayed }) => {
-  console.log(option);
+  setOptionsDisplayed: Dispatch<SetStateAction<option>>;
+  setColor: Dispatch<SetStateAction<string>>;
+}> = ({ option, setOptionsDisplayed, setColor }) => {
+  const color = Array.isArray(option?.color) ? option.color[0] : option.color;
+
   const findColor = (color: string): CSSModuleClasses[string] | null => {
     if (color === "red") return styles.red;
     if (color === "white") return styles.white;
@@ -15,22 +17,30 @@ export const ColorDisplay: FC<{
     if (color === "orange") return styles.orange;
     else return null;
   };
-  const color = Array.isArray(option?.color) ? option.color[0] : option.color;
   const colorText = color[0].toUpperCase() + color.slice(1);
 
-  const handleOnClick = () => {
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    setColor(color);
     setOptionsDisplayed(option);
   };
-
   return Array.isArray(option?.color) ? (
-    <button className={`${styles.button} `} onClick={handleOnClick}>
-      <div className={`${styles.display} ${findColor(color)}`} />
+    <div className={styles.container}>
+      <button
+        className={`${styles.display} ${findColor(color)}  ${findColor(
+          color
+        )} `}
+        onClick={handleOnClick}
+      />
       <span className={styles.infoColorText}>{colorText}</span>
-    </button>
+    </div>
   ) : (
-    <button className={`${styles.button} `} onClick={handleOnClick}>
-      <div className={`${styles.display} ${findColor(option.color)}`} />
+    <div className={styles.container}>
+      <button
+        className={`${styles.display} ${findColor(option.color)}`}
+        onClick={handleOnClick}
+      />
       <span className={styles.infoColorText}>{colorText}</span>
-    </button>
+    </div>
   );
 };

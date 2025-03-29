@@ -8,9 +8,8 @@ import { ColorDisplay } from "./ColorDisplay";
 
 export const DetailsPage = ({
   products,
-}: // setShoppingCart,
-// shoppingCart,
-{
+  setShoppingCart,
+}: {
   products: Product[];
   cartCount: number;
   setShoppingCart: Dispatch<SetStateAction<Product[]>>;
@@ -24,9 +23,9 @@ export const DetailsPage = ({
 
   const imgUrl = findProductImage(productDetails?.name, productDetails?.brand);
 
-  const handleOnClick = () => {
+  const handleOnSubmit = () => {
     if (productDetails) {
-      // setShoppingCart([...shoppingCart, productDetails]);
+      setShoppingCart([productDetails]);
     }
   };
 
@@ -35,7 +34,7 @@ export const DetailsPage = ({
   }
 
   return (
-    <div>
+    <form onSubmit={handleOnSubmit}>
       <div className={styles.contentContainer}>
         <div className={styles.headingContainer}></div>
         <h1 className={styles.h1}>Details</h1>
@@ -46,33 +45,43 @@ export const DetailsPage = ({
         {<Available Available={productDetails?.available} />}
         <div className={styles.productInfoContainer}>
           {productDetails?.price} kr{" "}
+          <input hidden value={productDetails?.price} />
         </div>
         <div className={styles.productInfoContainer}>
           <span className={styles.productInfoOption}>Weight: </span>
           {productDetails?.weight}
+          <input hidden value={productDetails?.weight} />
         </div>
         <div className={styles.productInfoContainer}>
           <span className={styles.productInfoOption}>Brand: </span>
+          <input hidden value={productDetails?.brand} />
           {productDetails?.brand}
         </div>
         {productDetails?.options?.length > 0 && (
           <ProductOptions options={productDetails.options} />
         )}
         <div>
-          <button className={styles.button} onClick={handleOnClick}>
+          <button className={styles.button} onClick={handleOnSubmit}>
             Add to cart
           </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
 const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
   const [optionsDisplayed, setOptionsDisplayed] = useState<option>(options[0]);
+  const [colorSelected, setColorSelected] = useState(
+    Array.isArray(optionsDisplayed.color)
+      ? optionsDisplayed.color[0]
+      : optionsDisplayed.color
+  );
+
   return (
     <div className={styles.optionsContainer}>
       <div className={styles.colorDisplayContainer}>
+        <input className={`${styles.input} `} hidden value={colorSelected} />
         {options.map((option, index) => {
           return (
             <React.Fragment key={index}>
@@ -83,6 +92,7 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
                       <ColorDisplay
                         option={option}
                         setOptionsDisplayed={setOptionsDisplayed}
+                        setColor={setColorSelected}
                       />
                     );
                   })
@@ -90,6 +100,7 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
                   <ColorDisplay
                     option={option}
                     setOptionsDisplayed={setOptionsDisplayed}
+                    setColor={setColorSelected}
                   />
                 ))}
             </React.Fragment>
