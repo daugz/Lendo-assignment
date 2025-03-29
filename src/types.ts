@@ -5,10 +5,11 @@ export type Product = {
   price: number;
   available: boolean;
   weight: number;
-  options: {
-    color: string | string[];
-    power: number[];
-    quantity: number;
-    storage: string[];
-  }[];
+  options: option[];
+};
+export type option = {
+  color: string | string[];
+  power: number[];
+  quantity: number;
+  storage: string[];
 };
