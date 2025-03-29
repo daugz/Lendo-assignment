@@ -5,10 +5,13 @@ import { DetailsPage } from "./pages/DetailsPage";
 import { ProductListPage } from "./pages/ProductListPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { useFetchInventory } from "./hooks";
+import { Product } from "./types";
 
 function App() {
-  const { inventory } = useFetchInventory();
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const { inventory, isLoading } = useFetchInventory();
+  const [shoppingCart, setShoppingCart] = useState<Product[]>([]);
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <Routes>
@@ -24,7 +27,12 @@ function App() {
       <Route
         path={`/details/:id`}
         element={
-          <DetailsPage products={inventory} cartCount={shoppingCart.length} />
+          <DetailsPage
+            products={inventory}
+            cartCount={shoppingCart.length}
+            setShoppingCart={setShoppingCart}
+            shoppingCart={shoppingCart}
+          />
         }
       />
       <Route path="/checkout" element={<CheckoutPage />} />
