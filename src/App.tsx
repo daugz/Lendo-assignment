@@ -24,7 +24,7 @@ function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
 
   const fetchInventory = async () => {
-    const inventoryResponse = await fetch("./inventory.json");
+    const inventoryResponse = await fetch("../api/inventory.json");
     const inventoryData = await inventoryResponse.json();
 
     setInventory(inventoryData?.items);
