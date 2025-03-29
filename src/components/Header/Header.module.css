@@ -1,10 +1,14 @@
 .header {
   display: flex;
-  width: 100%;
   background-color: #29c466;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.nav {
 }
 
 .headerContainer {
@@ -14,14 +18,36 @@
   padding-right: 16px;
   padding-top: 12px;
   padding-bottom: 12px;
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
+.telephone {
+  width: 36px;
+}
+
 .headingLink {
   display: flex;
+  text-decoration: none;
+  /* flex: 1; */
+}
+
+.navLinkContainer {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+.navLink {
+  text-decoration: none;
+  color: white;
+}
+.navLink:visited {
   text-decoration: none;
 }
 
