@@ -1,7 +1,7 @@
 import { ProductList } from "../components/ProductList/ProductList";
 import { Header } from "../components/Header/Header";
-import styles from "../App.module.css";
 import { type Product } from "../types";
+import styles from "../App.module.css";
 
 export const ProductListPage = ({
   products,
