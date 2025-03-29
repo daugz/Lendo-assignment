@@ -5,6 +5,7 @@ import styles from "./App.module.css";
 import { Routes, Route } from "react-router";
 import { DetailsPage } from "./pages/DetailsPage";
 import { ProductListPage } from "./pages/ProductListPage";
+import { CheckoutPage } from "./pages/CheckoutPage";
 
 function App() {
   const [inventory, setInventory] = useState<Product[] | []>([]);
@@ -43,6 +44,7 @@ function App() {
           <DetailsPage products={inventory} cartCount={shoppingCart.length} />
         }
       />
+      <Route path="/checkout" element={<CheckoutPage />} />
     </Routes>
   );
 }
