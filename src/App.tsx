@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { Routes, Route } from "react-router";
-import { DetailsPage } from "./pages/DetailsPage";
+import { DetailsPage } from "./pages/detailsPage/DetailsPage";
 import { ProductListPage } from "./pages/ProductListPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { useFetchInventory } from "./hooks";

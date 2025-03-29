@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router";
 
 import "./index.css";
 import App from "./App.tsx";
-import { DetailsPage } from "./pages/DetailsPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

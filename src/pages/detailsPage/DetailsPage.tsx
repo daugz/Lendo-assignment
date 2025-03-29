@@ -1,10 +1,11 @@
 import { useParams } from "react-router";
-import { Header } from "../components/Header/Header";
-import { type Product } from "../types";
-import { findProductImage } from "../utils";
+import { Header } from "../../components/Header/Header";
+import { type Product } from "../../types";
+import { findProductImage } from "../../utils";
 import styles from "./detailspage.module.css";
-import { Available } from "../components/Availability/Availability";
+import { Available } from "../../components/Availability/Availability";
 import { type Dispatch, type SetStateAction } from "react";
+import { ColorDisplay } from "./ColorDisplay";
 
 export const DetailsPage = ({
   products,
@@ -63,7 +64,17 @@ export const DetailsPage = ({
           {productDetails?.options.map((option, index) => {
             return (
               <div key={index}>
-                <div>{option.color}</div>
+                {option.color && (
+                  <div>
+                    {Array.isArray(option?.color) ? (
+                      option.color.map((color) => {
+                        return <ColorDisplay color={color} />;
+                      })
+                    ) : (
+                      <ColorDisplay color={option.color} />
+                    )}
+                  </div>
+                )}
                 <div>
                   {option?.power && (
                     <select>
