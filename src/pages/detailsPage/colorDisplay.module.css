@@ -1,0 +1,28 @@
+.display {
+  border-radius: 9999px;
+  min-width: 40px;
+  max-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 5px;
+  /* margin-top: 10px; */
+}
+
+.red {
+  background-color: #b22222;
+}
+.white {
+  background-color: white;
+}
+.green {
+  background-color: white;
+}
+.black {
+  background-color: black;
+}
+.orange {
+  background-color: white;
+}
