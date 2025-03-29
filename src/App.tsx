@@ -6,6 +6,7 @@ import { ProductListPage } from "./pages/ProductListPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { useFetchInventory } from "./hooks";
 import { Product } from "./types";
+import { Header } from "./components/Header/Header";
 
 function App() {
   const { inventory, isLoading } = useFetchInventory();
@@ -14,29 +15,33 @@ function App() {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <ProductListPage
-            products={inventory}
-            cartCount={shoppingCart.length}
-          />
-        }
-      />
-      <Route
-        path={`/details/:id`}
-        element={
-          <DetailsPage
-            products={inventory}
-            cartCount={shoppingCart.length}
-            setShoppingCart={setShoppingCart}
-            shoppingCart={shoppingCart}
-          />
-        }
-      />
-      <Route path="/checkout" element={<CheckoutPage />} />
-    </Routes>
+    <>
+      <Header cartCount={shoppingCart.length} />
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProductListPage
+              products={inventory}
+              cartCount={shoppingCart.length}
+            />
+          }
+        />
+        <Route
+          path={`/details/:id`}
+          element={
+            <DetailsPage
+              products={inventory}
+              cartCount={shoppingCart.length}
+              setShoppingCart={setShoppingCart}
+              shoppingCart={shoppingCart}
+            />
+          }
+        />
+        <Route path="/checkout" element={<CheckoutPage />} />
+      </Routes>
+    </>
   );
 }
 

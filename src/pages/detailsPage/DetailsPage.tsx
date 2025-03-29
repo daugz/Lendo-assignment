@@ -1,5 +1,4 @@
 import { useParams } from "react-router";
-import { Header } from "../../components/Header/Header";
 import { option, type Product } from "../../types";
 import { findProductImage } from "../../utils";
 import styles from "./detailspage.module.css";
@@ -9,7 +8,6 @@ import { ColorDisplay } from "./ColorDisplay";
 
 export const DetailsPage = ({
   products,
-  cartCount,
 }: // setShoppingCart,
 // shoppingCart,
 {
@@ -38,7 +36,6 @@ export const DetailsPage = ({
 
   return (
     <div>
-      <Header cartCount={cartCount}></Header>
       <div className={styles.contentContainer}>
         <div className={styles.headingContainer}></div>
         <h1 className={styles.h1}>Details</h1>
