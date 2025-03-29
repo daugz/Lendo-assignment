@@ -75,12 +75,12 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
   const [optionsDisplayed, setOptionsDisplayed] = useState<option>(options[0]);
   return (
     <div className={styles.optionsContainer}>
-      {options.map((option, index) => {
-        return (
-          <React.Fragment key={index}>
-            {option && (
-              <div className={styles.colorDisplayContainer}>
-                {Array.isArray(option?.color) ? (
+      <div className={styles.colorDisplayContainer}>
+        {options.map((option, index) => {
+          return (
+            <React.Fragment key={index}>
+              {option &&
+                (Array.isArray(option?.color) ? (
                   option.color.map(() => {
                     return (
                       <ColorDisplay
@@ -94,28 +94,30 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
                     option={option}
                     setOptionsDisplayed={setOptionsDisplayed}
                   />
-                )}
-              </div>
-            )}
-          </React.Fragment>
-        );
-      })}
+                ))}
+            </React.Fragment>
+          );
+        })}
+      </div>
       {optionsDisplayed?.quantity && (
         <div>Quantity: {optionsDisplayed.quantity}</div>
-      )}
-      {optionsDisplayed?.power && optionsDisplayed.power.length !== 1 ? (
-        <select className={styles.select}>
-          {optionsDisplayed?.power?.map((powerOption) => {
-            return (
-              <option key={powerOption} value={powerOption}>
-                {powerOption}
-              </option>
-            );
-          })}
-        </select>
-      ) : (
-        <div>{optionsDisplayed.power}</div>
-      )}
+      )}{" "}
+      <div>
+        Power:
+        {optionsDisplayed?.power && optionsDisplayed.power.length !== 1 ? (
+          <select className={styles.select}>
+            {optionsDisplayed?.power?.map((powerOption) => {
+              return (
+                <option key={powerOption} value={powerOption}>
+                  {powerOption}
+                </option>
+              );
+            })}
+          </select>
+        ) : (
+          <div>{optionsDisplayed.power}</div>
+        )}
+      </div>
     </div>
   );
 };

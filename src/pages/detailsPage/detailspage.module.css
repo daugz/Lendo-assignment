@@ -31,15 +31,20 @@
   margin-top: 10px;
   margin-bottom: 10px;
   width: fit-content;
+  gap: 20px;
+  display: flex;
 }
 
 .select {
-  border-radius: 9999px;
+  border-radius: 999px;
   min-width: 50px;
 }
 
 .optionsContainer {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .button {
   display: flex;
