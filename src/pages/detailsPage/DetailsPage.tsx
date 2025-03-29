@@ -1,10 +1,10 @@
 import { useParams } from "react-router";
 import { Header } from "../../components/Header/Header";
-import { type Product } from "../../types";
+import { option, type Product } from "../../types";
 import { findProductImage } from "../../utils";
 import styles from "./detailspage.module.css";
 import { Available } from "../../components/Availability/Availability";
-import { type Dispatch, type SetStateAction } from "react";
+import React, { FC, useState, type Dispatch, type SetStateAction } from "react";
 import { ColorDisplay } from "./ColorDisplay";
 
 export const DetailsPage = ({
@@ -46,9 +46,7 @@ export const DetailsPage = ({
           {imgUrl && <img className={styles.image} src={imgUrl} />}
         </div>
         <h2 className={styles.h2}>{productDetails?.name}</h2>
-        {productDetails?.available && (
-          <Available Available={productDetails?.available} />
-        )}
+        {<Available Available={productDetails?.available} />}
         <div className={styles.productInfoContainer}>
           {productDetails?.price} kr{" "}
         </div>
@@ -60,51 +58,65 @@ export const DetailsPage = ({
           <span className={styles.productInfoOption}>Brand: </span>
           {productDetails?.brand}
         </div>
+        {productDetails?.options?.length > 0 && (
+          <ProductOptions options={productDetails.options} />
+        )}
         <div>
-          {productDetails?.options.map((option, index) => {
-            return (
-              <div key={index}>
-                {option.color && (
-                  <div className={styles.colorDisplayContainer}>
-                    {Array.isArray(option?.color) ? (
-                      option.color.map((color) => {
-                        return <ColorDisplay color={color} />;
-                      })
-                    ) : (
-                      <ColorDisplay color={option.color} />
-                    )}
-                  </div>
-                )}
-                <div>
-                  {option?.power && (
-                    <select>
-                      {option?.power?.map((powerOption) => {
-                        return (
-                          <option key={powerOption} value={powerOption}>
-                            {powerOption}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  )}
-                </div>
-                <div>{option.quantity}</div>
-                <div>{option.storage} </div>
-                {/* <select>
-                {Array.isArray(option.color) ? (
-                  option.color.map((colorOption) => {
-                    return <option>{colorOption}</option>;
-                    })
-                    ) : (
-                      <option>{option.color}</option>
-                      )}
-                      </select> */}
-              </div>
-            );
-          })}
           <button onClick={handleOnClick}>Add to cart</button>
         </div>
       </div>
     </div>
   );
 };
+
+const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
+  const [optionsDisplayed, setOptionsDisplayed] = useState<option>(options[0]);
+  return (
+    <div className={styles.optionsContainer}>
+      {options.map((option, index) => {
+        return (
+          <React.Fragment key={index}>
+            {option && (
+              <div className={styles.colorDisplayContainer}>
+                {Array.isArray(option?.color) ? (
+                  option.color.map(() => {
+                    return (
+                      <ColorDisplay
+                        option={option}
+                        setOptionsDisplayed={setOptionsDisplayed}
+                      />
+                    );
+                  })
+                ) : (
+                  <ColorDisplay
+                    option={option}
+                    setOptionsDisplayed={setOptionsDisplayed}
+                  />
+                )}
+              </div>
+            )}
+          </React.Fragment>
+        );
+      })}
+      {optionsDisplayed?.quantity && (
+        <div>Quantity: {optionsDisplayed.quantity}</div>
+      )}
+      {optionsDisplayed?.power && optionsDisplayed.power.length !== 1 ? (
+        <select className={styles.select}>
+          {optionsDisplayed?.power?.map((powerOption) => {
+            return (
+              <option key={powerOption} value={powerOption}>
+                {powerOption}
+              </option>
+            );
+          })}
+        </select>
+      ) : (
+        <div>{optionsDisplayed.power}</div>
+      )}
+    </div>
+  );
+};
+
+// </div>
+// <div>{option.storage} </div>

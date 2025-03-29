@@ -10,6 +10,10 @@
   margin-bottom: 5px;
   /* margin-top: 10px; */
 }
+.button {
+  all: unset;
+  cursor: pointer;
+}
 
 .red {
   background-color: #b22222;
@@ -18,11 +22,11 @@
   background-color: white;
 }
 .green {
-  background-color: white;
+  background-color: #228b22;
 }
 .black {
   background-color: black;
 }
 .orange {
-  background-color: white;
+  background-color: orange;
 }
