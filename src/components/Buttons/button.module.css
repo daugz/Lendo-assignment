@@ -1,6 +1,5 @@
 .button {
   display: flex;
-  width: 100%;
   justify-content: center;
   background-color: #0071eb;
   border-radius: 9999px;
@@ -10,4 +9,5 @@
   border-color: black;
   border-width: 1px;
   border-style: solid;
+  text-decoration: none;
 }
