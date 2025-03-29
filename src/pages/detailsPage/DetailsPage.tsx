@@ -178,7 +178,12 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
               {optionsDisplayed?.power?.map((powerOption, index) => {
                 if (index === 1)
                   return (
-                    <option selected disabled hidden>
+                    <option
+                      key={"Choose power:"}
+                      defaultValue={"Choose power:"}
+                      disabled
+                      hidden
+                    >
                       Choose power:
                     </option>
                   );
