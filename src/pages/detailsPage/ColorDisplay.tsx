@@ -27,9 +27,7 @@ export const ColorDisplay: FC<{
   return Array.isArray(option?.color) ? (
     <div className={styles.container}>
       <button
-        className={`${styles.display} ${findColor(color)}  ${findColor(
-          color
-        )} `}
+        className={`${styles.button} ${findColor(color)}  ${findColor(color)} `}
         onClick={handleOnClick}
       />
       <span className={styles.infoColorText}>{colorText}</span>
@@ -37,7 +35,7 @@ export const ColorDisplay: FC<{
   ) : (
     <div className={styles.container}>
       <button
-        className={`${styles.display} ${findColor(option.color)}`}
+        className={`${styles.button} ${findColor(option.color)}`}
         onClick={handleOnClick}
       />
       <span className={styles.infoColorText}>{colorText}</span>
