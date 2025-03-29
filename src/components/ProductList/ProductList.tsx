@@ -1,6 +1,6 @@
 import { type FC } from "react";
 import styles from "./productList.module.css";
-import { type Product } from "../../pages/App";
+import { type Product } from "../../App";
 import { Card } from "../Card/Card";
 
 export const ProductList: FC<{ products: Product[] }> = ({ products }) => {

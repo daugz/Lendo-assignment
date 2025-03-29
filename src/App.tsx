@@ -1,23 +1,11 @@
 import { useEffect, useState } from "react";
 
 import styles from "./App.module.css";
-import { ProductList } from "../components/ProductList/ProductList";
-import { Header } from "../components/Header/Header";
 
-export type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  price: number;
-  available: boolean;
-  weight: number;
-  options: {
-    color: string | string[];
-    power: number[];
-    quantity: number;
-    storage: string[];
-  }[];
-};
+import { Routes, Route } from "react-router";
+import { DetailsPage } from "./pages/DetailsPage";
+import { ProductListPage } from "./pages/ProductListPage";
+
 function App() {
   const [inventory, setInventory] = useState<Product[] | []>([]);
 
@@ -39,12 +27,23 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Header cartCount={shoppingCart.length} />
-      <div className={styles.productListContainer}>
-        {inventory?.length > 0 && <ProductList products={inventory} />}
-      </div>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <ProductListPage
+            products={inventory}
+            cartCount={shoppingCart.length}
+          />
+        }
+      />
+      <Route
+        path="/details"
+        element={
+          <DetailsPage products={inventory} cartCount={shoppingCart.length} />
+        }
+      />
+    </Routes>
   );
 }
 

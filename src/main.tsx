@@ -3,16 +3,13 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import "./index.css";
-import App from "./pages/App.tsx";
-import { Details } from "./pages/Details.tsx";
+import App from "./App.tsx";
+import { DetailsPage } from "./pages/DetailsPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/details" element={<Details />} />
-      </Routes>
+      <App />
     </BrowserRouter>
   </StrictMode>
 );
