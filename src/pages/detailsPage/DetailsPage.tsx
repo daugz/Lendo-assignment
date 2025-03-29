@@ -3,7 +3,14 @@ import { option, type Product } from "../../types";
 import { findProductImage } from "../../utils";
 import styles from "./detailspage.module.css";
 import { Available } from "../../components/Availability/Availability";
-import React, { FC, useState, type Dispatch, type SetStateAction } from "react";
+import React, {
+  FC,
+  useActionState,
+  useRef,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { ColorDisplay } from "./ColorDisplay";
 
 export const DetailsPage = ({
@@ -17,56 +24,97 @@ export const DetailsPage = ({
 }) => {
   const { id } = useParams();
 
+  const nameRef = useRef<HTMLInputElement>(null);
+  const [state, formAction] = useActionState((previousState, formData) => {
+    const id = formData.get("id");
+    const name = formData.get("name");
+    const price = formData.get("price");
+    const brand = formData.get("brand");
+    const weight = formData.get("weight");
+    const color = formData.get("color");
+    const power = formData.get("power");
+    const storage = formData.get("storage");
+    const quantity = Number(formData.get("quantity"));
+
+    const chosenProduct = {
+      id: id,
+      name: name,
+      price: price,
+      weight: weight,
+      brand: brand,
+      color: color,
+      power: power,
+      storage: storage,
+      quantity: quantity,
+    };
+
+    if (productDetails.available && quantity > 0) {
+      sessionStorage.setItem(id, JSON.stringify(chosenProduct));
+    }
+    if (quantity === 0)
+      return {
+        type: "error",
+        message: `Color is sold out`,
+      };
+  }, null);
+
   const productDetails = products.filter(
     (product) => product.id?.toString() === id
   )[0];
 
+  console.log(sessionStorage.getItem(productDetails?.id?.toString()));
   const imgUrl = findProductImage(productDetails?.name, productDetails?.brand);
-
-  const handleOnSubmit = () => {
-    if (productDetails) {
-      setShoppingCart([productDetails]);
-    }
-  };
 
   if (!productDetails) {
     <div>Could not find product</div>;
   }
-
   return (
-    <form onSubmit={handleOnSubmit}>
-      <div className={styles.contentContainer}>
-        <div className={styles.headingContainer}></div>
-        <h1 className={styles.h1}>Details</h1>
-        <div className={styles.imageContainer}>
-          {imgUrl && <img className={styles.image} src={imgUrl} />}
+    <>
+      {state && <p>{state?.message}</p>}
+      <form action={formAction}>
+        <div className={styles.contentContainer}>
+          <div className={styles.headingContainer}></div>
+          <h1 className={styles.h1}>Details</h1>
+          <div className={styles.imageContainer}>
+            {imgUrl && <img className={styles.image} src={imgUrl} />}
+          </div>
+          <input type="text" hidden name="id" value={productDetails?.id} />
+          <input type="text" hidden name="name" value={productDetails?.name} />
+          <h2 className={styles.h2}>{productDetails?.name}</h2>
+          {<Available Available={productDetails?.available} />}
+          <div className={styles.productInfoContainer}>
+            {productDetails?.price} kr{" "}
+            <input hidden name="price" value={productDetails?.price} />
+          </div>
+          <div className={styles.productInfoContainer}>
+            <span className={styles.productInfoOption}>Weight: </span>
+            {productDetails?.weight}
+            <input hidden name="weight" value={productDetails?.weight} />
+          </div>
+          <div className={styles.productInfoContainer}>
+            <input hidden name="brand" value={productDetails?.brand} />
+            <span className={styles.productInfoOption}>Brand: </span>
+            <input hidden value={productDetails?.brand} />
+            {productDetails?.brand}
+          </div>
+          {productDetails?.options?.length > 0 && (
+            <ProductOptions options={productDetails.options} />
+          )}
+          <div>
+            <AddToCartButton available={productDetails?.available} />
+          </div>
         </div>
-        <h2 className={styles.h2}>{productDetails?.name}</h2>
-        {<Available Available={productDetails?.available} />}
-        <div className={styles.productInfoContainer}>
-          {productDetails?.price} kr{" "}
-          <input hidden value={productDetails?.price} />
-        </div>
-        <div className={styles.productInfoContainer}>
-          <span className={styles.productInfoOption}>Weight: </span>
-          {productDetails?.weight}
-          <input hidden value={productDetails?.weight} />
-        </div>
-        <div className={styles.productInfoContainer}>
-          <span className={styles.productInfoOption}>Brand: </span>
-          <input hidden value={productDetails?.brand} />
-          {productDetails?.brand}
-        </div>
-        {productDetails?.options?.length > 0 && (
-          <ProductOptions options={productDetails.options} />
-        )}
-        <div>
-          <button className={styles.button} onClick={handleOnSubmit}>
-            Add to cart
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </>
+  );
+};
+
+const AddToCartButton: FC<{ available: boolean }> = ({ available }) => {
+  const isDisabled = !available ? styles.disabled : "";
+  return (
+    <button disabled={available} className={`${styles.button} ${isDisabled}`}>
+      Add to cart
+    </button>
   );
 };
 
@@ -81,7 +129,12 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
   return (
     <div className={styles.optionsContainer}>
       <div className={styles.colorDisplayContainer}>
-        <input className={`${styles.input} `} hidden value={colorSelected} />
+        <input
+          className={`${styles.input} `}
+          name="color"
+          hidden
+          value={colorSelected}
+        />
         {options.map((option, index) => {
           return (
             <React.Fragment key={index}>
@@ -107,28 +160,66 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
           );
         })}
       </div>
-      {optionsDisplayed?.quantity && (
-        <div>Quantity: {optionsDisplayed.quantity}</div>
-      )}{" "}
-      <div>
-        Power:
-        {optionsDisplayed?.power && optionsDisplayed.power.length !== 1 ? (
-          <select className={styles.select}>
-            {optionsDisplayed?.power?.map((powerOption) => {
-              return (
-                <option key={powerOption} value={powerOption}>
-                  {powerOption}
-                </option>
-              );
-            })}
-          </select>
-        ) : (
-          <div>{optionsDisplayed.power}</div>
-        )}
-      </div>
+      {optionsDisplayed?.quantity && optionsDisplayed?.quantity !== 0 ? (
+        <>
+          <input hidden name="quantity" value={optionsDisplayed.quantity} />
+          <div>Quantity: {optionsDisplayed.quantity}</div>
+        </>
+      ) : (
+        <>
+          <input hidden name="quantity" value={optionsDisplayed.quantity} />
+          <div>Sold out</div>
+        </>
+      )}
+      {optionsDisplayed?.power && (
+        <div>
+          {optionsDisplayed.power.length !== 1 ? (
+            <select name="power" className={styles.select}>
+              {optionsDisplayed?.power?.map((powerOption, index) => {
+                if (index === 1)
+                  return (
+                    <option selected disabled hidden>
+                      Choose power:
+                    </option>
+                  );
+                return (
+                  <option key={powerOption} value={powerOption}>
+                    {powerOption}
+                  </option>
+                );
+              })}
+            </select>
+          ) : (
+            <>
+              <input hidden value={optionsDisplayed.power[0]} />
+              <div>{optionsDisplayed.power[0]}</div>
+            </>
+          )}
+        </div>
+      )}
+      {optionsDisplayed?.storage && (
+        <div>
+          storage:
+          {optionsDisplayed.storage.length !== 1 ? (
+            <select name="storage" className={styles.select}>
+              {optionsDisplayed?.storage?.map((storageOption) => {
+                return (
+                  <option key={storageOption} value={storageOption}>
+                    {storageOption}
+                  </option>
+                );
+              })}
+            </select>
+          ) : (
+            <>
+              <input hidden value={optionsDisplayed.storage[0]} />
+              <span>{optionsDisplayed.storage[0]}</span>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };
 
 // </div>
-// <div>{option.storage} </div>

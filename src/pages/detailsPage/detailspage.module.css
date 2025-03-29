@@ -62,3 +62,7 @@
   border-style: solid;
   text-decoration: none;
 }
+
+.disabled {
+  opacity: 0.6;
+}
