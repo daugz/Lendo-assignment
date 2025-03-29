@@ -10,14 +10,13 @@ type Card = {
 };
 
 export const Card: FC<Card> = ({ product }) => {
+  const imageUrl = findProductImage(product.name, product.brand);
+
   return (
     <li key={product?.id} className={styles.card}>
       <div className={styles.listContainer}>
         <div className={styles.imageWrapper}>
-          <img
-            className={styles.image}
-            src={findProductImage(product.name, product.brand)}
-          />
+          {imageUrl && <img className={styles.image} src={imageUrl} />}{" "}
         </div>
         <h2 className={styles.h2}>{product?.name}</h2>
 
