@@ -1,0 +1,1 @@
+export { findProductImage } from "./findProductImage";
