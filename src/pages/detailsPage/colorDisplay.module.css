@@ -40,8 +40,8 @@
   text-align: center;
   /* outline: black;
   padding: 10px;
-  border-radius: 999px; */
-} */
+  border-radius: 999px; }*/
+
 .button:focus {
   border-color: black;
   border-style: solid;
