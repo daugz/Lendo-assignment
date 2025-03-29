@@ -62,7 +62,9 @@ export const DetailsPage = ({
           <ProductOptions options={productDetails.options} />
         )}
         <div>
-          <button onClick={handleOnClick}>Add to cart</button>
+          <button className={styles.button} onClick={handleOnClick}>
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
