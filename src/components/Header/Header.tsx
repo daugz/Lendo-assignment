@@ -10,7 +10,7 @@ export const Header: FC<Header> = ({ cartCount }) => {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <a href="/" className={styles.headingLink}>
-          <img src={"./Lendo-image.svg"} />
+          <img src={"/Lendo-image.svg"} />
         </a>
         <a className={styles.shoppingCartLink}>
           <span className={styles.cartCount}>{cartCount}</span>
