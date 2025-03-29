@@ -1,8 +1,11 @@
-export const findProductImage = (name: string, brand: string): string => {
+export const findProductImage = (
+  name: string,
+  brand: string
+): string | null => {
   const assetProductsUrl = "/Products";
 
-  const lowerCaseBrand = brand.toLowerCase();
-  const lowerCaseProductName = name.toLowerCase();
+  const lowerCaseBrand = brand?.toLowerCase();
+  const lowerCaseProductName = name?.toLowerCase();
 
   if (lowerCaseProductName === "philips hue bulb")
     return `${assetProductsUrl}/philips-hue.png`;
@@ -24,5 +27,5 @@ export const findProductImage = (name: string, brand: string): string => {
   if (lowerCaseProductName === "benq gw2765he eye-care")
     return `${assetProductsUrl}/benq-screen.png`;
 
-  return "";
+  return null;
 };
