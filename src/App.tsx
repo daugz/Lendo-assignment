@@ -22,7 +22,7 @@ function App() {
         }
       />
       <Route
-        path="/details"
+        path={`/details/:id`}
         element={
           <DetailsPage products={inventory} cartCount={shoppingCart.length} />
         }
