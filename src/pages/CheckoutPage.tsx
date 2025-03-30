@@ -57,16 +57,25 @@ const CheckoutCard: FC<{
         <img className={styles.image} src={item?.image} />
       </div>
       <div className={styles.infoContainer}>
-        <div className={styles.colorContainer}>
-          <div className={`${styles.color} ${findColor(item?.color)}`} />
+        {item.name && <h2 className={styles.h2}>{item.name}</h2>}
+
+        <div className={styles.brandColorContainer}>
+          {item.brand && (
+            <div className={`${styles.bold} ${styles.brand}`}>{item.brand}</div>
+          )}
+          <div className={styles.colorContainer}>
+            <div className={`${styles.color} ${findColor(item?.color)}`} />
+          </div>
         </div>
-        {item.name && <h2>{item.name}</h2>}
-        {item.brand && <div className={styles.bold}>{item.brand}</div>}
-        {item.price && <div>{item.price} kr</div>}
+        {item.price && <div className={styles.bold}>{item.price} kr</div>}
         {item.power && <div>{item.power} W</div>}
         {item.storage && <div>{item.storage} gb</div>}
         {item.weight && <div>{item.weight} kg</div>}
-
+        <div className={styles.quantityContainer}>
+          <button className={styles.decrement} />
+          <div className={styles.amount}>{item?.count}</div>
+          <button className={styles.increment} />
+        </div>
         <button className={styles.removeButton} onClick={handleOnRemove}>
           <img src={"/Icons/trash-can-icon.svg"} /> Remove item
         </button>
