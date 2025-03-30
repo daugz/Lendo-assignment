@@ -12,6 +12,7 @@ export const CheckoutPage: FC<CheckoutPage> = ({
   shoppingCart,
   setShoppingCart,
 }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cartUpdated, setCartUpdated] = useState(0);
   const checkoutItems = getAllCheckoutItems();
   console.log(checkoutItems);
@@ -22,6 +23,15 @@ export const CheckoutPage: FC<CheckoutPage> = ({
       sessionStorage.clear();
     }
   };
+
+  const getTotal = () => {
+    const calculateTotal = checkoutItems.reduce((acc, item): number => {
+      acc += item?.price * item?.count;
+      return acc;
+    }, 0);
+    return calculateTotal;
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Checkout</h1>
@@ -39,6 +49,9 @@ export const CheckoutPage: FC<CheckoutPage> = ({
             />
           );
         })}
+      </div>
+      <div>
+        <div className={styles.total}>Total: {getTotal()}</div>
       </div>
     </div>
   );

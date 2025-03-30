@@ -109,6 +109,7 @@
   align-items: center;
   width: 100%;
   max-width: -webkit-fill-available;
+  max-width: -moz-available;
 }
 .amount {
   width: 100%;
@@ -142,4 +143,10 @@
 
 .disabledCartChanger {
   opacity: 0.5;
+}
+
+/*Total*/
+.total {
+  font-size: 18px;
+  font-weight: 600;
 }
