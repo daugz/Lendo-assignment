@@ -1,9 +1,13 @@
 import { type FC } from "react";
 import styles from "./Header.module.css";
 import { useLocation } from "react-router";
+import { getAllCheckoutItems } from "../../utils";
 
 export const Header: FC = () => {
-  const cart = sessionStorage?.length;
+  const cart = getAllCheckoutItems().reduce((acc, item) => {
+    acc += item.count;
+    return acc;
+  }, 0);
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
