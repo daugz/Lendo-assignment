@@ -2,11 +2,8 @@ import { type FC } from "react";
 import styles from "./Header.module.css";
 import { useLocation } from "react-router";
 
-type Header = {
-  cartCount: number;
-};
-
-export const Header: FC<Header> = ({ cartCount }) => {
+export const Header: FC = () => {
+  const cart = sessionStorage?.length;
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -17,7 +14,7 @@ export const Header: FC<Header> = ({ cartCount }) => {
           <img src={"/Lendo-image.svg"} />
         </a>
         <a className={styles.shoppingCartLink}>
-          <span className={styles.cartCount}>{cartCount}</span>
+          <span className={styles.cartCount}>{cart}</span>
           <div className={styles.shoppingCartImage}></div>
         </a>
       </div>
