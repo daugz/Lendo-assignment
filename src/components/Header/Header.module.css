@@ -36,7 +36,6 @@
 .navLinkContainer {
   padding-top: 5px;
   padding-bottom: 10px;
-  gap: 10px;
   display: flex;
   font-size: 20px;
   width: 100%;
@@ -46,7 +45,18 @@
 .navLink {
   text-decoration: none;
   color: white;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
 }
+
+.active {
+  text-decoration: none;
+  color: white;
+  text-decoration: underline;
+}
+
 .navLink:visited {
   text-decoration: none;
 }
