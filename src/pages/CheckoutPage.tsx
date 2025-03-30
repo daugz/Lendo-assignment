@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, type FC } from "react";
+import { Dispatch, SetStateAction, useState, type FC } from "react";
 import styles from "./checkoutPage.module.css";
 import { findColor, getAllCheckoutItems, removeItem } from "../utils";
 import { CheckoutProduct } from "../types";
@@ -12,6 +12,7 @@ export const CheckoutPage: FC<CheckoutPage> = ({
   shoppingCart,
   setShoppingCart,
 }) => {
+  const [cartUpdated, setCartUpdated] = useState(0);
   const checkoutItems = getAllCheckoutItems();
   console.log(checkoutItems);
   const handleOnClick = () => {
@@ -34,6 +35,7 @@ export const CheckoutPage: FC<CheckoutPage> = ({
               item={item}
               shoppingCart={shoppingCart}
               setShoppingCart={setShoppingCart}
+              setCartUpdated={setCartUpdated}
             />
           );
         })}
@@ -46,9 +48,63 @@ const CheckoutCard: FC<{
   item: CheckoutProduct;
   shoppingCart: string[];
   setShoppingCart: Dispatch<SetStateAction<string[]>>;
-}> = ({ item, shoppingCart, setShoppingCart }) => {
+  setCartUpdated: Dispatch<SetStateAction<number>>;
+}> = ({ item, shoppingCart, setShoppingCart, setCartUpdated }) => {
+  const [productCount, setProductCount] = useState(item?.count);
+
   const handleOnRemove = () => {
     removeItem(item, shoppingCart, setShoppingCart);
+  };
+  const handleOnDecrement = () => {
+    if (item?.count > 1 && productCount > 1) {
+      const product = sessionStorage.getItem(item.checkoutProductId);
+      if (product) {
+        const parsedProduct = JSON.parse(product);
+        const decrementedCount = {
+          ...parsedProduct,
+          count: parsedProduct?.count - 1,
+        };
+        setCartUpdated((prevValue) => prevValue + 1);
+        setProductCount((prevValue: number) => prevValue - 1);
+        sessionStorage.setItem(
+          item?.checkoutProductId,
+          JSON.stringify(decrementedCount)
+        );
+      }
+    }
+  };
+  const handleOnIncrement = () => {
+    if (
+      item?.count >= 1 &&
+      item.count < item.quantity &&
+      productCount < item.quantity
+    ) {
+      const product = sessionStorage.getItem(item.checkoutProductId);
+      if (product) {
+        const parsedProduct = JSON.parse(product);
+        const incrementedCount = {
+          ...parsedProduct,
+          count: parsedProduct?.count + 1,
+        };
+        setCartUpdated((prevValue) => prevValue + 1);
+        setProductCount((prevValue: number) => prevValue + 1);
+        // const setNewCount = product ? JSON.parse(product)?.count : null;
+        sessionStorage.setItem(
+          item?.checkoutProductId,
+          JSON.stringify(incrementedCount)
+        );
+      }
+    }
+  };
+  const productCountIsLargerThanQuantity = () => {
+    if (item.count >= item.quantity || productCount >= item.quantity) {
+      return styles.disabledCartChanger;
+    } else return "";
+  };
+  const productCountIsLowestAmount = () => {
+    if (item.count <= 1 && productCount <= 1) {
+      return styles.disabledCartChanger;
+    } else return "";
   };
 
   return (
@@ -63,22 +119,32 @@ const CheckoutCard: FC<{
           {item.brand && (
             <div className={`${styles.bold} ${styles.brand}`}>{item.brand}</div>
           )}
-          <div className={styles.colorContainer}>
-            <div className={`${styles.color} ${findColor(item?.color)}`} />
-          </div>
+          <div
+            className={`${styles.colorContainer} ${findColor(item?.color)}`}
+          />
         </div>
         {item.price && <div className={styles.bold}>{item.price} kr</div>}
         {item.power && <div>{item.power} W</div>}
         {item.storage && <div>{item.storage} gb</div>}
         {item.weight && <div>{item.weight} kg</div>}
-        <div className={styles.quantityContainer}>
-          <button className={styles.decrement} />
-          <div className={styles.amount}>{item?.count}</div>
-          <button className={styles.increment} />
+        <div className={styles.changeCart}>
+          <div className={styles.quantityContainer}>
+            <button
+              className={`${styles.decrement} ${productCountIsLowestAmount()}`}
+              onClick={handleOnDecrement}
+            />
+            <div className={styles.amount}>{item?.count}</div>
+            <button
+              className={`${
+                styles.increment
+              } ${productCountIsLargerThanQuantity()}`}
+              onClick={handleOnIncrement}
+            />
+          </div>
+          <button className={styles.removeButton} onClick={handleOnRemove}>
+            <img src={"/Icons/trash-can-icon.svg"} /> Remove
+          </button>
         </div>
-        <button className={styles.removeButton} onClick={handleOnRemove}>
-          <img src={"/Icons/trash-can-icon.svg"} /> Remove item
-        </button>
       </div>
     </div>
   );

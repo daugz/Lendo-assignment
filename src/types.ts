@@ -16,6 +16,7 @@ export type Option = {
 
 export type CheckoutProduct = {
   id: number;
+  checkoutProductId: string;
   image: string;
   name: string;
   brand: string;
@@ -24,5 +25,6 @@ export type CheckoutProduct = {
   weight?: number;
   power?: number;
   storage?: string;
+  quantity: number;
   count: number;
 };

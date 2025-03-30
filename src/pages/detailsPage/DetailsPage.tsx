@@ -59,6 +59,7 @@ export const DetailsPage = ({
       color: color,
       power: power,
       storage: storage,
+      quantity: quantity,
       count:
         isProductAlreadyAdded() && isProductAlreadyAdded()?.count
           ? isProductAlreadyAdded().count + 1
