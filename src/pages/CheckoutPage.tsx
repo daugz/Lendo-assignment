@@ -31,13 +31,13 @@ export const CheckoutPage = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Checkout</h1>
+      <button onClick={handleOnClick}>Remove all items in cart</button>
 
       <div className={styles.checkoutCardContainer}>
         {checkoutItems.map((item) => {
           return <CheckoutCard item={item} />;
         })}
       </div>
-      <button onClick={handleOnClick}>Remove all items in cart</button>
     </div>
   );
 };
