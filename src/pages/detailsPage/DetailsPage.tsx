@@ -6,7 +6,6 @@ import { Available } from "../../components/Availability/Availability";
 import React, {
   FC,
   useActionState,
-  useRef,
   useState,
   type Dispatch,
   type SetStateAction,
@@ -24,7 +23,6 @@ export const DetailsPage = ({
 }) => {
   const { id } = useParams();
 
-  const nameRef = useRef<HTMLInputElement>(null);
   const [state, formAction] = useActionState((previousState, formData) => {
     const id = formData.get("id");
     const name = formData.get("name");
