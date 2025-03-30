@@ -5,18 +5,17 @@ import { DetailsPage } from "./pages/detailsPage/DetailsPage";
 import { ProductListPage } from "./pages/ProductListPage";
 import { CheckoutPage } from "./pages/CheckoutPage";
 import { useFetchInventory } from "./hooks";
-import { Product } from "./types";
 import { Header } from "./components/Header/Header";
 
 function App() {
   const { inventory, isLoading } = useFetchInventory();
-  const [shoppingCart, setShoppingCart] = useState<Product[]>([]);
+  const [shoppingCart, setShoppingCart] = useState<string[]>([]);
 
   if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
-      <Header cartCount={shoppingCart.length} />
+      <Header />
 
       <Routes>
         <Route
@@ -39,7 +38,10 @@ function App() {
             />
           }
         />
-        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route
+          path="/checkout"
+          element={<CheckoutPage setShoppingCart={setShoppingCart} />}
+        />
       </Routes>
     </>
   );

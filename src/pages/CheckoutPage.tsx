@@ -1,15 +1,20 @@
-import { type FC } from "react";
+import { Dispatch, SetStateAction, type FC } from "react";
 import styles from "./checkoutPage.module.css";
 import { findColor, getAllCheckoutItems } from "../utils";
 import { CheckoutProduct } from "../types";
 
-export const CheckoutPage = () => {
+type CheckoutPage = {
+  shoppingCart: string[];
+  setShoppingCart: Dispatch<SetStateAction<[]>>;
+};
+
+export const CheckoutPage: FC<CheckoutPage> = ({ setShoppingCart }) => {
   const checkoutItems = getAllCheckoutItems();
   console.log(checkoutItems);
   const handleOnClick = () => {
     const isCartAlreadyEmpty = sessionStorage?.length === 0;
-
-    if (!sessionStorage?.length || !isCartAlreadyEmpty) {
+    if (!isCartAlreadyEmpty) {
+      setShoppingCart([]);
       sessionStorage.clear();
     }
   };
