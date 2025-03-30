@@ -40,7 +40,12 @@ function App() {
         />
         <Route
           path="/checkout"
-          element={<CheckoutPage setShoppingCart={setShoppingCart} />}
+          element={
+            <CheckoutPage
+              setShoppingCart={setShoppingCart}
+              shoppingCart={shoppingCart}
+            />
+          }
         />
       </Routes>
     </>

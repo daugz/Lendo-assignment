@@ -4,10 +4,14 @@ import { findColor, getAllCheckoutItems } from "../utils";
 import { CheckoutProduct } from "../types";
 
 type CheckoutPage = {
+  shoppingCart: string[];
   setShoppingCart: Dispatch<SetStateAction<string[]>>;
 };
 
-export const CheckoutPage: FC<CheckoutPage> = ({ setShoppingCart }) => {
+export const CheckoutPage: FC<CheckoutPage> = ({
+  shoppingCart,
+  setShoppingCart,
+}) => {
   const checkoutItems = getAllCheckoutItems();
   console.log(checkoutItems);
   const handleOnClick = () => {
@@ -24,14 +28,34 @@ export const CheckoutPage: FC<CheckoutPage> = ({ setShoppingCart }) => {
 
       <div className={styles.checkoutCardContainer}>
         {checkoutItems.map((item) => {
-          return <CheckoutCard item={item} />;
+          return (
+            <CheckoutCard
+              key={item?.checkoutProductId}
+              item={item}
+              shoppingCart={shoppingCart}
+              setShoppingCart={setShoppingCart}
+            />
+          );
         })}
       </div>
     </div>
   );
 };
 
-const CheckoutCard: FC<{ item: CheckoutProduct }> = ({ item }) => {
+const CheckoutCard: FC<{
+  item: CheckoutProduct;
+  shoppingCart: string[];
+  setShoppingCart: Dispatch<SetStateAction<string[]>>;
+}> = ({ item, shoppingCart, setShoppingCart }) => {
+  const handleOnRemove = () => {
+    if (sessionStorage?.length) {
+      sessionStorage.removeItem(item?.checkoutProductId);
+      setShoppingCart(
+        shoppingCart.filter((product) => product === item?.checkoutProductId)
+      );
+    }
+  };
+
   return (
     <div className={styles.checkOutCard}>
       <div className={styles.imageContainer}>
@@ -47,6 +71,10 @@ const CheckoutCard: FC<{ item: CheckoutProduct }> = ({ item }) => {
         {item.power && <div>{item.power} W</div>}
         {item.storage && <div>{item.storage} gb</div>}
         {item.weight && <div>{item.weight} kg</div>}
+
+        <button className={styles.removeButton} onClick={handleOnRemove}>
+          <img src={"/Icons/trash-can-icon.svg"} /> Remove item
+        </button>
       </div>
     </div>
   );
