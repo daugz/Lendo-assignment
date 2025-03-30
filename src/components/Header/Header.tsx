@@ -1,5 +1,6 @@
 import { type FC } from "react";
 import styles from "./Header.module.css";
+import { useLocation } from "react-router";
 
 type Header = {
   cartCount: number;
@@ -21,13 +22,34 @@ export const Header: FC<Header> = ({ cartCount }) => {
         </a>
       </div>
       <nav className={styles.navLinkContainer}>
-        <a href="/" className={styles.navLink}>
-          Home
-        </a>
-        <a className={styles.navLink} href={"/checkout"}>
-          Checkout
-        </a>
+        <NavLink link={"/"} text={"Home"} />
+
+        <NavLink link={"/checkout"} text={"Checkout"} />
       </nav>
     </header>
+  );
+};
+
+const NavLink: FC<{ link: string; text: string }> = ({ link, text }) => {
+  const { pathname } = useLocation();
+
+  const checkIfActiveLink = (link: string, pathName: string) => {
+    const isHomeLink = pathName === "/";
+    const isActiveNavLink = pathName?.split("/")[1] === link?.split("/")[1];
+    if (isHomeLink) {
+      return true;
+    } else if (isActiveNavLink) return true;
+    else return false;
+  };
+
+  return (
+    <a
+      href={link}
+      className={`${styles.navLink} ${
+        checkIfActiveLink(link, pathname) ? styles.active : ""
+      }`}
+    >
+      {text}
+    </a>
   );
 };
