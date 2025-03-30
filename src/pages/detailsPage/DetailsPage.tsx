@@ -146,6 +146,7 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
                         option={option}
                         setOptionsDisplayed={setOptionsDisplayed}
                         setColor={setColorSelected}
+                        activeColor={colorSelected}
                       />
                     );
                   })
@@ -154,6 +155,7 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
                     option={option}
                     setOptionsDisplayed={setOptionsDisplayed}
                     setColor={setColorSelected}
+                    activeColor={colorSelected}
                   />
                 ))}
             </React.Fragment>
@@ -173,16 +175,16 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
       )}
       {optionsDisplayed?.power && (
         <div>
-          {optionsDisplayed.power.length !== 1 ? (
+          {
             <select name="power" className={styles.select}>
               {optionsDisplayed?.power?.map((powerOption, index) => {
-                if (index === 1)
+                if (index === 0)
                   return (
                     <option
                       key={"Choose power:"}
                       defaultValue={"Choose power:"}
                       disabled
-                      hidden
+                      selected
                     >
                       Choose power:
                     </option>
@@ -194,20 +196,26 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
                 );
               })}
             </select>
-          ) : (
-            <>
-              <input hidden value={optionsDisplayed.power[0]} />
-              <div>{optionsDisplayed.power[0]}</div>
-            </>
-          )}
+          }
         </div>
       )}
       {optionsDisplayed?.storage && (
         <div>
           storage:
-          {optionsDisplayed.storage.length !== 1 ? (
+          {
             <select name="storage" className={styles.select}>
-              {optionsDisplayed?.storage?.map((storageOption) => {
+              {optionsDisplayed?.storage?.map((storageOption, index) => {
+                if (index === 0)
+                  return (
+                    <option
+                      key={"Choose storage:"}
+                      defaultValue={"Choose storage:"}
+                      disabled
+                      hidden
+                    >
+                      Choose storage:
+                    </option>
+                  );
                 return (
                   <option key={storageOption} value={storageOption}>
                     {storageOption}
@@ -215,12 +223,7 @@ const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
                 );
               })}
             </select>
-          ) : (
-            <>
-              <input hidden value={optionsDisplayed.storage[0]} />
-              <span>{optionsDisplayed.storage[0]}</span>
-            </>
-          )}
+          }
         </div>
       )}
     </div>

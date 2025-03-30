@@ -11,9 +11,9 @@ export const ColorDisplay: FC<{
   option: option;
   setOptionsDisplayed: Dispatch<SetStateAction<option>>;
   setColor: Dispatch<SetStateAction<string>>;
-}> = ({ option, setOptionsDisplayed, setColor }) => {
+  activeColor: string;
+}> = ({ option, setOptionsDisplayed, setColor, activeColor }) => {
   const color = Array.isArray(option?.color) ? option.color[0] : option.color;
-
   const findColor = (color: string): CSSModuleClasses[string] | null => {
     if (color === "red") return styles.red;
     if (color === "white") return styles.white;
@@ -32,7 +32,9 @@ export const ColorDisplay: FC<{
   return Array.isArray(option?.color) ? (
     <div className={styles.container}>
       <button
-        className={`${styles.button} ${findColor(color)}  ${findColor(color)} `}
+        className={`${styles.button} ${findColor(color)}  ${
+          color === activeColor ? styles.active : ""
+        } `}
         onClick={handleOnClick}
       />
       <span className={styles.infoColorText}>{colorText}</span>
@@ -40,7 +42,9 @@ export const ColorDisplay: FC<{
   ) : (
     <div className={styles.container}>
       <button
-        className={`${styles.button} ${findColor(option.color)}`}
+        className={`${styles.button} ${findColor(option.color)} ${
+          color === activeColor ? styles.active : ""
+        }`}
         onClick={handleOnClick}
       />
       <span className={styles.infoColorText}>{colorText}</span>

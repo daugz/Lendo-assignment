@@ -20,7 +20,6 @@
   border-style: solid;
   border-width: 1px;
   margin-bottom: 5px;
-  all: unset;
   cursor: pointer;
   text-align: center;
   /* margin-top: 10px; */
@@ -43,14 +42,15 @@
   border-radius: 999px; }*/
 
 .button:focus {
-  border-color: black;
+  border-color: grey;
   border-style: solid;
-  border-width: 1px;
+  border-width: 3px;
 }
 .active {
   border-color: black;
   border-style: solid;
   border-width: 2px;
+  background-color: pink;
 }
 
 .red {
