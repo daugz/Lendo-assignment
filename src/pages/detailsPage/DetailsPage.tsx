@@ -14,6 +14,7 @@ import { ColorDisplay } from "./ColorDisplay";
 
 export const DetailsPage = ({
   products,
+  shoppingCart,
   setShoppingCart,
 }: {
   products: Product[];
@@ -35,6 +36,18 @@ export const DetailsPage = ({
     const storage = formData.get("storage");
     const quantity = Number(formData.get("quantity"));
 
+    const cartProductId = id + brand + color + power + storage;
+
+    const isProductAlreadyAdded = () => {
+      const doesProductExist = sessionStorage.getItem(cartProductId);
+
+      if (doesProductExist) {
+        const parseProduct = JSON.parse(doesProductExist);
+        return parseProduct;
+      }
+      return null;
+    };
+
     const chosenProduct = {
       id: id,
       image: image,
@@ -45,13 +58,16 @@ export const DetailsPage = ({
       color: color,
       power: power,
       storage: storage,
-      quantity: quantity,
+      count:
+        isProductAlreadyAdded() && isProductAlreadyAdded()?.count
+          ? isProductAlreadyAdded().count + 1
+          : 1,
     };
 
-    const cartProductId = id + brand + color + power + storage;
-
     if (productDetails.available && quantity > 0) {
+      console.log("Added to cart");
       sessionStorage.setItem(cartProductId, JSON.stringify(chosenProduct));
+      setShoppingCart([...shoppingCart, cartProductId]);
     }
     if (quantity === 0)
       return {
