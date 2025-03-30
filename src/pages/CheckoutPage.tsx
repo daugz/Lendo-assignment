@@ -1,24 +1,9 @@
 import { type FC } from "react";
 import styles from "./checkoutPage.module.css";
 import { type Product } from "../types";
-import { findColor } from "../utils";
+import { findColor, getAllCheckoutItems } from "../utils";
 
 export const CheckoutPage = () => {
-  const getAllCheckoutItems = () => {
-    let cart: Product[] = [];
-    if (sessionStorage?.length) {
-      for (let index = 0; index < sessionStorage?.length; index++) {
-        const key = sessionStorage.key(index);
-        if (key) {
-          const product = sessionStorage.getItem(key);
-          if (product) {
-            cart = [...cart, JSON.parse(product)];
-          }
-        }
-      }
-    }
-    return cart;
-  };
   const checkoutItems = getAllCheckoutItems();
   console.log(checkoutItems);
   const handleOnClick = () => {
