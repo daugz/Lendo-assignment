@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  background: linear-gradient(180deg, #059142, #29c466);
+  /* background: linear-gradient(180deg, #059142, #29c466); */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@
   position: fixed;
   padding-left: 10px;
   padding-right: 10px;
-  /* background: linear-gradient(rgb(42, 199, 104) 0px, rgb(27, 136, 71) 100%); */
+  background: linear-gradient(rgb(42, 199, 104) 0px, rgb(27, 136, 71) 100%);
   top: 0;
 }
 
@@ -45,7 +45,7 @@
   font-size: 20px;
   width: 100%;
   justify-content: center;
-  margin-top: 65px;
+  margin-top: 57px;
   gap: 32px;
   background-color: rgb(27, 136, 71);
 }
