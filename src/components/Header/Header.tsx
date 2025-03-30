@@ -16,8 +16,8 @@ export const Header: FC = () => {
           <img src={"/Lendo-image.svg"} />
         </a>
         <a href={"/checkout"} className={styles.shoppingCartLink}>
-          <span className={styles.cartCount}>{cart}</span>
           <div className={styles.shoppingCartImage}>
+            <span className={styles.cartCount}>{cart}</span>
             <svg
               viewBox="0 0 576 512"
               xmlns="http://www.w3.org/2000/svg"
