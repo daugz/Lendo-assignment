@@ -1,9 +1,4 @@
-import {
-  type MouseEventHandler,
-  type SetStateAction,
-  type Dispatch,
-  type FC,
-} from "react";
+import { type SetStateAction, type Dispatch, type FC } from "react";
 import styles from "./colorDisplay.module.css";
 import { type Option } from "../../types";
 import { findColor } from "../../utils";
@@ -18,8 +13,9 @@ export const ColorDisplay: FC<{
 
   const colorText = color[0].toUpperCase() + color.slice(1);
 
-  const handleOnClick = (e: MouseEventHandler<HTMLButtonElement>): void => {
-    e.preventDefault();
+  const handleOnClick = (e: React.MouseEvent): void => {
+    const prevenDefault = () => e.preventDefault();
+    prevenDefault();
     setColor(color);
     setOptionsDisplayed(option);
   };
