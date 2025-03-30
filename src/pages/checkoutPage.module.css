@@ -135,5 +135,5 @@
 }
 
 .disabledCartChanger {
-  background-color: #696969;
+  opacity: 0.5;
 }
