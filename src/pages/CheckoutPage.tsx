@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import { type FC } from "react";
 import styles from "./checkoutPage.module.css";
-import { Product } from "../types";
+import { type Product } from "../types";
+import { findColor } from "../utils";
 
 export const CheckoutPage = () => {
   const getAllCheckoutItems = () => {
@@ -19,7 +20,7 @@ export const CheckoutPage = () => {
     return cart;
   };
   const checkoutItems = getAllCheckoutItems();
-
+  console.log(checkoutItems);
   const handleOnClick = () => {
     const isCartAlreadyEmpty = sessionStorage?.length === 0;
 
@@ -49,7 +50,9 @@ const CheckoutCard: FC<{ item: any }> = ({ item }) => {
       </div>
       <div className={styles.infoContainer}>
         {item.brand && <div>{item.brand}</div>}
-        <div>{item.color}</div>
+        <div className={styles.colorContainer}>
+          <div className={`${styles.color} ${findColor(item?.color)}`} />
+        </div>
         {item.name && <div>{item.name}</div>}
         {item.power && <div>{item.power}</div>}
         {item.price && <div>{item.price}</div>}
