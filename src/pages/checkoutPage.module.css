@@ -64,7 +64,13 @@
   border-width: 1px;
   margin-bottom: 5px;
 }
-
+.optionsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 .removeButton {
   display: flex;
   width: 100%;

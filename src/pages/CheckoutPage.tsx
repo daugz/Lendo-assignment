@@ -124,9 +124,11 @@ const CheckoutCard: FC<{
           />
         </div>
         {item.price && <div className={styles.bold}>{item.price} kr</div>}
-        {item.power && <div>{item.power} W</div>}
-        {item.storage && <div>{item.storage} gb</div>}
-        {item.weight && <div>{item.weight} kg</div>}
+        <div className={styles.optionsContainer}>
+          {item.power && <div>{item.power} W</div>}
+          {item.storage && <div>{item.storage} gb</div>}
+          {item.weight && <div>{item.weight} kg</div>}
+        </div>
         <div className={styles.changeCart}>
           <div className={styles.quantityContainer}>
             <button
