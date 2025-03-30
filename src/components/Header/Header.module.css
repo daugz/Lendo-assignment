@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  background-color: #29c466;
+  background: linear-gradient(180deg, #059142, #29c466);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  background-color: #29c466;
+  /* background: linear-gradient(rgb(42, 199, 104) 0px, rgb(27, 136, 71) 100%); */
   top: 0;
 }
 
