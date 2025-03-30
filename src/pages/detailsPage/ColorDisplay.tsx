@@ -1,6 +1,6 @@
 import {
-  MouseEventHandler,
-  SetStateAction,
+  type MouseEventHandler,
+  type SetStateAction,
   type Dispatch,
   type FC,
 } from "react";
