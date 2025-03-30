@@ -13,7 +13,7 @@ export const Header: FC = () => {
         <a href="/" className={styles.headingLink}>
           <img src={"/Lendo-image.svg"} />
         </a>
-        <a className={styles.shoppingCartLink}>
+        <a href={"/checkout"} className={styles.shoppingCartLink}>
           <span className={styles.cartCount}>{cart}</span>
           <div className={styles.shoppingCartImage}></div>
         </a>
@@ -32,13 +32,15 @@ const NavLink: FC<{ link: string; text: string }> = ({ link, text }) => {
 
   const checkIfActiveLink = (link: string, pathName: string) => {
     const isHomeLink = pathName === "/";
-    const isActiveNavLink = pathName?.split("/")[1] === link?.split("/")[1];
+    const isActiveNavLink =
+      pathName?.split("/")[1].trim() === link?.split("/")[1].trim();
+    console.log(pathName?.split("/")[1], link?.split("/")[1]);
     if (isHomeLink) {
       return true;
     } else if (isActiveNavLink) return true;
     else return false;
   };
-
+  console.log(link, checkIfActiveLink(link, pathname));
   return (
     <a
       href={link}
