@@ -50,5 +50,9 @@
   border-color: black;
   border-style: solid;
   border-width: 2px;
-  background-color: pink;
+  border-radius: 999px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }

@@ -25,20 +25,18 @@ export const ColorDisplay: FC<{
   };
   return Array.isArray(option?.color) ? (
     <div className={styles.container}>
-      <button
-        className={`${styles.button} ${findColor(color)}  ${
-          color === activeColor ? styles.active : ""
-        } `}
-        onClick={handleOnClick}
-      />
+      <div className={` ${color === activeColor ? styles.active : ""} `}>
+        <button
+          className={`${styles.button} ${findColor(color)}  `}
+          onClick={handleOnClick}
+        />
+      </div>
       <span className={styles.infoColorText}>{colorText}</span>
     </div>
   ) : (
     <div className={styles.container}>
       <button
-        className={`${styles.button} ${findColor(option.color)} ${
-          color === activeColor ? styles.active : ""
-        }`}
+        className={`${styles.button} ${findColor(option.color)} `}
         onClick={handleOnClick}
       />
       <span className={styles.infoColorText}>{colorText}</span>
