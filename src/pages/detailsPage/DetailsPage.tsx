@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { option, type Product } from "../../types";
+import { Option, type Product } from "../../types";
 import { findProductImage } from "../../utils";
 import styles from "./detailspage.module.css";
 import { Available } from "../../components/Availability/Availability";
@@ -141,8 +141,8 @@ const AddToCartButton: FC<{ available: boolean }> = ({ available }) => {
   );
 };
 
-const ProductOptions: FC<{ options: option[] }> = ({ options }) => {
-  const [optionsDisplayed, setOptionsDisplayed] = useState<option>(options[0]);
+const ProductOptions: FC<{ options: Option[] }> = ({ options }) => {
+  const [optionsDisplayed, setOptionsDisplayed] = useState<Option>(options[0]);
   const [colorSelected, setColorSelected] = useState(
     Array.isArray(optionsDisplayed.color)
       ? optionsDisplayed.color[0]

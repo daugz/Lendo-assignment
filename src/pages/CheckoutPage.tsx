@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import styles from "./checkoutPage.module.css";
-import { type Product } from "../types";
 import { findColor, getAllCheckoutItems } from "../utils";
+import { CheckoutProduct } from "../types";
 
 export const CheckoutPage = () => {
   const checkoutItems = getAllCheckoutItems();
@@ -27,7 +27,7 @@ export const CheckoutPage = () => {
   );
 };
 
-const CheckoutCard: FC<{ item: any }> = ({ item }) => {
+const CheckoutCard: FC<{ item: CheckoutProduct }> = ({ item }) => {
   return (
     <div className={styles.checkOutCard}>
       <div className={styles.imageContainer}>

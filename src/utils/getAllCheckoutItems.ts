@@ -1,7 +1,7 @@
-import type { Product } from "../types";
+import type { CheckoutProduct } from "../types";
 
 export const getAllCheckoutItems = () => {
-  let cart: Product[] = [];
+  let cart: CheckoutProduct[] = [];
   if (sessionStorage?.length) {
     for (let index = 0; index < sessionStorage?.length; index++) {
       const key = sessionStorage.key(index);

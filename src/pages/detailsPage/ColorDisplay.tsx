@@ -5,12 +5,12 @@ import {
   type FC,
 } from "react";
 import styles from "./colorDisplay.module.css";
-import { type option } from "../../types";
+import { type Option } from "../../types";
 import { findColor } from "../../utils";
 
 export const ColorDisplay: FC<{
-  option: option;
-  setOptionsDisplayed: Dispatch<SetStateAction<option>>;
+  option: Option;
+  setOptionsDisplayed: Dispatch<SetStateAction<Option>>;
   setColor: Dispatch<SetStateAction<string>>;
   activeColor: string;
 }> = ({ option, setOptionsDisplayed, setColor, activeColor }) => {
