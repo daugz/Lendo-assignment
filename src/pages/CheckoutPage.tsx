@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, type FC } from "react";
 import styles from "./checkoutPage.module.css";
-import { findColor, getAllCheckoutItems } from "../utils";
+import { findColor, getAllCheckoutItems, removeItem } from "../utils";
 import { CheckoutProduct } from "../types";
 
 type CheckoutPage = {
@@ -48,12 +48,7 @@ const CheckoutCard: FC<{
   setShoppingCart: Dispatch<SetStateAction<string[]>>;
 }> = ({ item, shoppingCart, setShoppingCart }) => {
   const handleOnRemove = () => {
-    if (sessionStorage?.length) {
-      sessionStorage.removeItem(item?.checkoutProductId);
-      setShoppingCart(
-        shoppingCart.filter((product) => product === item?.checkoutProductId)
-      );
-    }
+    removeItem(item, shoppingCart, setShoppingCart);
   };
 
   return (
