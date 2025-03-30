@@ -25,6 +25,7 @@ export const DetailsPage = ({
 
   const [state, formAction] = useActionState((previousState, formData) => {
     const id = formData.get("id");
+    const image = formData.get("image");
     const name = formData.get("name");
     const price = formData.get("price");
     const brand = formData.get("brand");
@@ -36,6 +37,7 @@ export const DetailsPage = ({
 
     const chosenProduct = {
       id: id,
+      image: image,
       name: name,
       price: price,
       weight: weight,
@@ -76,7 +78,12 @@ export const DetailsPage = ({
           <div className={styles.headingContainer}></div>
           <h1 className={styles.h1}>Details</h1>
           <div className={styles.imageContainer}>
-            {imgUrl && <img className={styles.image} src={imgUrl} />}
+            {imgUrl && (
+              <>
+                <input type="text" hidden name="image" value={imgUrl} />{" "}
+                <img className={styles.image} src={imgUrl} />
+              </>
+            )}
           </div>
           <input type="text" hidden name="id" value={productDetails?.id} />
           <input type="text" hidden name="name" value={productDetails?.name} />
