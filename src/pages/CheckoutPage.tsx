@@ -34,15 +34,15 @@ const CheckoutCard: FC<{ item: CheckoutProduct }> = ({ item }) => {
         <img className={styles.image} src={item?.image} />
       </div>
       <div className={styles.infoContainer}>
-        {item.brand && <div>{item.brand}</div>}
         <div className={styles.colorContainer}>
           <div className={`${styles.color} ${findColor(item?.color)}`} />
         </div>
         {item.name && <h2>{item.name}</h2>}
+        {item.brand && <div className={styles.bold}>{item.brand}</div>}
         {item.price && <div>{item.price} kr</div>}
-        {item.power && <div>{item.power}</div>}
-        {item.storage && <div>{item.storage}</div>}
-        {item.weight && <div>{item.weight}</div>}
+        {item.power && <div>{item.power} W</div>}
+        {item.storage && <div>{item.storage} gb</div>}
+        {item.weight && <div>{item.weight} kg</div>}
       </div>
     </div>
   );
