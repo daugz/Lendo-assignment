@@ -41,23 +41,10 @@ export const Header: FC = () => {
 const NavLink: FC<{ link: string; text: string }> = ({ link, text }) => {
   const { pathname } = useLocation();
 
-  const checkIfActiveLink = (link: string, pathName: string) => {
-    const isHomeLink = pathName === "/";
-    const isActiveNavLink =
-      pathName?.split("/")[1].trim() === link?.split("/")[1].trim();
-    console.log(pathName?.split("/")[1], link?.split("/")[1]);
-    if (isHomeLink) {
-      return true;
-    } else if (isActiveNavLink) return true;
-    else return false;
-  };
-  console.log(link, checkIfActiveLink(link, pathname));
   return (
     <a
       href={link}
-      className={`${styles.navLink} ${
-        checkIfActiveLink(link, pathname) ? styles.active : ""
-      }`}
+      className={`${styles.navLink} ${link === pathname ? styles.active : ""}`}
     >
       {text}
     </a>
