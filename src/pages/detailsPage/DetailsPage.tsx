@@ -47,7 +47,10 @@ export const DetailsPage = ({
       }
       return null;
     };
-
+    const addToCount =
+      isProductAlreadyAdded() && isProductAlreadyAdded()?.count
+        ? isProductAlreadyAdded().count + 1
+        : 1;
     const chosenProduct = {
       id: id,
       checkoutProductId: cartProductId,
@@ -60,14 +63,10 @@ export const DetailsPage = ({
       power: power,
       storage: storage,
       quantity: quantity,
-      count:
-        isProductAlreadyAdded() && isProductAlreadyAdded()?.count
-          ? isProductAlreadyAdded().count + 1
-          : 1,
+      count: addToCount,
     };
 
     if (productDetails.available && quantity > 0) {
-      console.log("Added to cart");
       sessionStorage.setItem(cartProductId, JSON.stringify(chosenProduct));
       setShoppingCart([...shoppingCart, cartProductId]);
       return {
@@ -86,7 +85,6 @@ export const DetailsPage = ({
     (product) => product.id?.toString() === id
   )[0];
 
-  console.log(sessionStorage.getItem(productDetails?.id?.toString()));
   const imgUrl = findProductImage(productDetails?.name, productDetails?.brand);
 
   if (!productDetails) {
