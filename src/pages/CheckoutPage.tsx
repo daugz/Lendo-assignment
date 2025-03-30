@@ -54,8 +54,8 @@ const CheckoutCard: FC<{ item: any }> = ({ item }) => {
           <div className={`${styles.color} ${findColor(item?.color)}`} />
         </div>
         {item.name && <h2>{item.name}</h2>}
+        {item.price && <div>{item.price} kr</div>}
         {item.power && <div>{item.power}</div>}
-        {item.price && <div>{item.price}</div>}
         {item.storage && <div>{item.storage}</div>}
         {item.weight && <div>{item.weight}</div>}
       </div>
