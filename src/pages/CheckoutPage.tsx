@@ -4,8 +4,7 @@ import { findColor, getAllCheckoutItems } from "../utils";
 import { CheckoutProduct } from "../types";
 
 type CheckoutPage = {
-  shoppingCart: string[];
-  setShoppingCart: Dispatch<SetStateAction<[]>>;
+  setShoppingCart: Dispatch<SetStateAction<string[]>>;
 };
 
 export const CheckoutPage: FC<CheckoutPage> = ({ setShoppingCart }) => {

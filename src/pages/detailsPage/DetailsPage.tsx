@@ -19,8 +19,8 @@ export const DetailsPage = ({
 }: {
   products: Product[];
   cartCount: number;
-  setShoppingCart: Dispatch<SetStateAction<Product[]>>;
-  shoppingCart: Product[];
+  setShoppingCart: Dispatch<SetStateAction<string[]>>;
+  shoppingCart: string[];
 }) => {
   const { id } = useParams();
 
