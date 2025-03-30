@@ -46,8 +46,10 @@ export const DetailsPage = ({
       quantity: quantity,
     };
 
+    const cartProductId = id + brand + color + power + storage;
+
     if (productDetails.available && quantity > 0) {
-      sessionStorage.setItem(id, JSON.stringify(chosenProduct));
+      sessionStorage.setItem(cartProductId, JSON.stringify(chosenProduct));
     }
     if (quantity === 0)
       return {
