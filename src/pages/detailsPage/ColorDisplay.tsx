@@ -6,6 +6,7 @@ import {
 } from "react";
 import styles from "./colorDisplay.module.css";
 import { type option } from "../../types";
+import { findColor } from "../../utils";
 
 export const ColorDisplay: FC<{
   option: option;
@@ -14,14 +15,7 @@ export const ColorDisplay: FC<{
   activeColor: string;
 }> = ({ option, setOptionsDisplayed, setColor, activeColor }) => {
   const color = Array.isArray(option?.color) ? option.color[0] : option.color;
-  const findColor = (color: string): CSSModuleClasses[string] | null => {
-    if (color === "red") return styles.red;
-    if (color === "white") return styles.white;
-    if (color === "green") return styles.green;
-    if (color === "black") return styles.black;
-    if (color === "orange") return styles.orange;
-    else return null;
-  };
+
   const colorText = color[0].toUpperCase() + color.slice(1);
 
   const handleOnClick = (e: MouseEventHandler<HTMLButtonElement>): void => {
