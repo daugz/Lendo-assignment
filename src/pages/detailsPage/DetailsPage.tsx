@@ -50,6 +50,7 @@ export const DetailsPage = ({
 
     const chosenProduct = {
       id: id,
+      checkoutProductId: cartProductId,
       image: image,
       name: name,
       price: price,
