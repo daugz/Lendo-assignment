@@ -110,7 +110,7 @@ export const DetailsPage = ({
 const AddToCartButton: FC<{ available: boolean }> = ({ available }) => {
   const isDisabled = !available ? styles.disabled : "";
   return (
-    <button disabled={available} className={`${styles.button} ${isDisabled}`}>
+    <button disabled={!available} className={`${styles.button} ${isDisabled}`}>
       Add to cart
     </button>
   );
