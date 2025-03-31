@@ -31,10 +31,12 @@ export const ColorDisplay: FC<{
     </div>
   ) : (
     <div className={styles.container}>
-      <button
-        className={`${styles.button} ${findColor(option.color)} `}
-        onClick={handleOnClick}
-      />
+      <div className={` ${color === activeColor ? styles.active : ""} `}>
+        <button
+          className={`${styles.button} ${findColor(option.color)} `}
+          onClick={handleOnClick}
+        />
+      </div>
       <span className={styles.infoColorText}>{colorText}</span>
     </div>
   );
