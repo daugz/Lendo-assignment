@@ -9,6 +9,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 function App() {
   const { inventory, isLoading } = useFetchInventory();
   const [shoppingCart, setShoppingCart] = useState<string[]>([]);
+  const [cartUpdated, setCartUpdated] = useState(0);
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -43,6 +44,7 @@ function App() {
             <CheckoutPage
               setShoppingCart={setShoppingCart}
               shoppingCart={shoppingCart}
+              setCartUpdated={setCartUpdated}
             />
           }
         />

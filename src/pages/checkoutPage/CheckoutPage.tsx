@@ -6,14 +6,14 @@ import { CheckoutCard } from "./CheckoutCard";
 type CheckoutPage = {
   shoppingCart: string[];
   setShoppingCart: Dispatch<SetStateAction<string[]>>;
+  setCartUpdated: Dispatch<SetStateAction<number>>;
 };
 
 export const CheckoutPage: FC<CheckoutPage> = ({
   shoppingCart,
   setShoppingCart,
+  setCartUpdated,
 }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [cartUpdated, setCartUpdated] = useState(0);
   const checkoutItems = getAllCheckoutItems();
   const handleOnClick = () => {
     const isCartAlreadyEmpty = sessionStorage?.length === 0;
