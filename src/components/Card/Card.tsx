@@ -17,17 +17,18 @@ export const Card: FC<Card> = ({ product }) => {
       <div className={styles.listContainer}>
         <div className={styles.imageWrapper}>
           {imageUrl && <img className={styles.image} src={imageUrl} />}{" "}
+          <h2 className={styles.h2}>{product?.name}</h2>
         </div>
-        <h2 className={styles.h2}>{product?.name}</h2>
-
-        <Available Available={product.available} />
-        <div className={styles.listItem}>
-          <div className={styles.infoRow}>
-            <p className={styles.paragraph}>{product?.price + " kr"} </p>
+        <div>
+          <Available Available={product.available} />
+          <div className={styles.listItem}>
+            <div className={styles.infoRow}>
+              <p className={styles.paragraph}>{product?.price + " kr"} </p>
+            </div>
           </div>
-        </div>
 
-        <Button text="More info" id={product.id} />
+          <Button text="More info" id={product.id} />
+        </div>
       </div>
     </li>
   );
