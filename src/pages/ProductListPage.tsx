@@ -1,6 +1,6 @@
 import { ProductList } from "../components/ProductList/ProductList";
 import { type Product } from "../types";
-import styles from "../App.module.css";
+import styles from "./productListPage.module.css";
 
 export const ProductListPage = ({
   products,
@@ -9,10 +9,8 @@ export const ProductListPage = ({
   cartCount: number;
 }) => {
   return (
-    <div>
-      <div className={styles.productListContainer}>
-        {products?.length > 0 && <ProductList products={products} />}
-      </div>
+    <div className={styles.productListContainer}>
+      {products?.length > 0 && <ProductList products={products} />}
     </div>
   );
 };

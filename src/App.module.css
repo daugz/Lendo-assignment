@@ -1,10 +1,3 @@
 .body {
   min-height: 100vh;
 }
-
-.productListContainer {
-  display: flex;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 20px;
-}
