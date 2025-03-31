@@ -26,7 +26,7 @@ export const CheckoutPage: FC<CheckoutPage> = ({
 
   const getTotal = () => {
     const calculateTotal = checkoutItems.reduce((acc, item): number => {
-      acc += item?.price * item?.count;
+      acc += Number(item?.price) * item?.count;
       return acc;
     }, 0);
     return calculateTotal;

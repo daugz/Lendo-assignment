@@ -15,16 +15,16 @@ export type Option = {
 };
 
 export type CheckoutProduct = {
-  id: number;
+  id: string;
   checkoutProductId: string;
   image: string;
   name: string;
   brand: string;
-  price: number;
+  price: string;
   color: string;
-  weight?: number;
-  power?: number;
-  storage?: string;
+  weight?: string;
+  power?: string | null;
+  storage?: string | null;
   quantity: number;
   count: number;
 };
