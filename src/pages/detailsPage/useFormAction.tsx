@@ -6,6 +6,7 @@ export const useFormAction = (
   shoppingCart: string[],
   setShoppingCart: Dispatch<SetStateAction<string[]>>
 ) => {
+  //@ts-expect-error could not find type for formdata
   const [state, formAction] = useActionState((previousState, formData) => {
     const id = formData.get("id");
     const image = formData.get("image");
@@ -18,7 +19,9 @@ export const useFormAction = (
     const storage = formData.get("storage");
     const quantity = Number(formData.get("quantity"));
 
-    const cartProductId = id + brand + color + power + storage;
+    const cartProductId = [id, brand, color, power, storage]
+      .filter((val) => val)
+      .join("");
 
     const isProductAlreadyAdded = () => {
       const doesProductExist = sessionStorage.getItem(cartProductId);
@@ -51,11 +54,13 @@ export const useFormAction = (
     if (productDetails.available && quantity > 0) {
       sessionStorage.setItem(cartProductId, JSON.stringify(chosenProduct));
       setShoppingCart([...shoppingCart, cartProductId]);
+
       return {
         type: "added",
         message: `Product successfully added to cart`,
       };
     }
+
     if (quantity === 0)
       return {
         type: "error",
