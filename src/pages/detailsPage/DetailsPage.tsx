@@ -3,7 +3,13 @@ import { type Product } from "../../types";
 import { findProductImage } from "../../utils";
 import styles from "./detailspage.module.css";
 import { Available } from "../../components/Availability/Availability";
-import { type FC, type Dispatch, type SetStateAction } from "react";
+import {
+  type FC,
+  type Dispatch,
+  type SetStateAction,
+  useState,
+  useEffect,
+} from "react";
 import { useFormAction } from "./useFormAction";
 import { ProductOptions } from "./ProductOptions";
 
@@ -19,6 +25,8 @@ export const DetailsPage = ({
 }) => {
   const { id } = useParams();
 
+  const [showMessage, setShowMessage] = useState(false);
+
   const productDetails = products.filter(
     (product) => product.id?.toString() === id
   )[0];
@@ -28,6 +36,16 @@ export const DetailsPage = ({
     shoppingCart,
     setShoppingCart
   );
+
+  useEffect(() => {
+    if (state && state.type === "added") {
+      setShowMessage(true);
+
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 1500);
+    }
+  }, [state]);
 
   const imgUrl = findProductImage(productDetails?.name, productDetails?.brand);
 
@@ -74,7 +92,7 @@ export const DetailsPage = ({
             />
           )}
           <div>
-            {state?.type === "added" && (
+            {showMessage && (
               <div className={styles.messagePopUp}>
                 <div className={styles.checkMark}>
                   <svg
@@ -89,7 +107,7 @@ export const DetailsPage = ({
                       </g>
                     </g>
                   </svg>
-                </div>{" "}
+                </div>
                 <p>{state?.message}</p>
               </div>
             )}
