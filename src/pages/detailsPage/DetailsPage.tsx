@@ -4,7 +4,7 @@ import { findProductImage } from "../../utils";
 import styles from "./detailspage.module.css";
 import { Available } from "../../components/Availability/Availability";
 import React, {
-  FC,
+  type FC,
   useActionState,
   useState,
   type Dispatch,
