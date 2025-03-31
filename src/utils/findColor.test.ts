@@ -1,5 +1,5 @@
 import { describe, test, expect, vi } from "vitest";
-import { findColor } from "./findColor"; // Adjust the path if needed
+import { findColor } from "./findColor";
 
 vi.mock("./styles.module.css", () => ({
   default: {
