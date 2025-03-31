@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router";
 import { DetailsPage, ProductListPage, CheckoutPage } from "./pages";
 import { useFetchInventory } from "./hooks";
 import { Header } from "./components/Header/Header";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 function App() {
   const { inventory, isLoading } = useFetchInventory();
@@ -12,7 +13,7 @@ function App() {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <>
+    <ErrorBoundary>
       <Header />
 
       <Routes>
@@ -46,7 +47,7 @@ function App() {
           }
         />
       </Routes>
-    </>
+    </ErrorBoundary>
   );
 }
 
