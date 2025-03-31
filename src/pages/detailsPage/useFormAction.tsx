@@ -51,7 +51,7 @@ export const useFormAction = (
       count: addToCount,
     };
 
-    if (productDetails.available && quantity > 0) {
+    if (productDetails.available && quantity > 0 && addToCount <= quantity) {
       sessionStorage.setItem(cartProductId, JSON.stringify(chosenProduct));
       setShoppingCart([...shoppingCart, cartProductId]);
 
