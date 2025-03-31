@@ -1,7 +1,11 @@
 import { Dispatch, SetStateAction, useState, type FC } from "react";
 import styles from "./checkoutPage.module.css";
-import { findColor, getAllCheckoutItems, removeItemFromCart } from "../utils";
-import { CheckoutProduct } from "../types";
+import {
+  findColor,
+  getAllCheckoutItems,
+  removeItemFromCart,
+} from "../../utils";
+import { CheckoutProduct } from "../../types";
 
 type CheckoutPage = {
   shoppingCart: string[];
@@ -15,7 +19,6 @@ export const CheckoutPage: FC<CheckoutPage> = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cartUpdated, setCartUpdated] = useState(0);
   const checkoutItems = getAllCheckoutItems();
-  console.log(checkoutItems);
   const handleOnClick = () => {
     const isCartAlreadyEmpty = sessionStorage?.length === 0;
     if (!isCartAlreadyEmpty) {

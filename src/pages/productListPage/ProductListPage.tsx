@@ -1,5 +1,5 @@
-import { ProductList } from "../components/ProductList/ProductList";
-import { type Product } from "../types";
+import { ProductList } from "../../components/ProductList/ProductList";
+import { type Product } from "../../types";
 import styles from "./productListPage.module.css";
 
 export const ProductListPage = ({
