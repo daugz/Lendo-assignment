@@ -1,0 +1,19 @@
+.colorDisplayContainer {
+  /* margin-top: 10px;
+    margin-bottom: 10px; */
+  width: fit-content;
+  gap: 20px;
+  display: flex;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.select {
+  border-radius: 999px;
+  min-width: 50px;
+}
