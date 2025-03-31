@@ -5,12 +5,12 @@ import styles from "./detailspage.module.css";
 import { Available } from "../../components/Availability/Availability";
 import React, {
   type FC,
-  useActionState,
   useState,
   type Dispatch,
   type SetStateAction,
 } from "react";
 import { ColorDisplay } from "./ColorDisplay";
+import { useFormAction } from "./useFormAction";
 
 export const DetailsPage = ({
   products,
@@ -24,66 +24,15 @@ export const DetailsPage = ({
 }) => {
   const { id } = useParams();
 
-  const [state, formAction] = useActionState((previousState, formData) => {
-    const id = formData.get("id");
-    const image = formData.get("image");
-    const name = formData.get("name");
-    const price = formData.get("price");
-    const brand = formData.get("brand");
-    const weight = formData.get("weight");
-    const color = formData.get("color");
-    const power = formData.get("power");
-    const storage = formData.get("storage");
-    const quantity = Number(formData.get("quantity"));
-
-    const cartProductId = id + brand + color + power + storage;
-
-    const isProductAlreadyAdded = () => {
-      const doesProductExist = sessionStorage.getItem(cartProductId);
-
-      if (doesProductExist) {
-        const parseProduct = JSON.parse(doesProductExist);
-        return parseProduct;
-      }
-      return null;
-    };
-    const addToCount =
-      isProductAlreadyAdded() && isProductAlreadyAdded()?.count
-        ? isProductAlreadyAdded().count + 1
-        : 1;
-    const chosenProduct = {
-      id: id,
-      checkoutProductId: cartProductId,
-      image: image,
-      name: name,
-      price: price,
-      weight: weight,
-      brand: brand,
-      color: color,
-      power: power,
-      storage: storage,
-      quantity: quantity,
-      count: addToCount,
-    };
-
-    if (productDetails.available && quantity > 0) {
-      sessionStorage.setItem(cartProductId, JSON.stringify(chosenProduct));
-      setShoppingCart([...shoppingCart, cartProductId]);
-      return {
-        type: "added",
-        message: `Product successfully added to cart`,
-      };
-    }
-    if (quantity === 0)
-      return {
-        type: "error",
-        message: `Color is sold out`,
-      };
-  }, null);
-
   const productDetails = products.filter(
     (product) => product.id?.toString() === id
   )[0];
+
+  const { state, formAction } = useFormAction(
+    productDetails,
+    shoppingCart,
+    setShoppingCart
+  );
 
   const imgUrl = findProductImage(productDetails?.name, productDetails?.brand);
 
