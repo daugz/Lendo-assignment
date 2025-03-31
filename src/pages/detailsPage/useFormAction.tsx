@@ -1,9 +1,10 @@
-import React, { useActionState } from "react";
+import { type Dispatch, type SetStateAction, useActionState } from "react";
+import type { Product } from "../../types";
 
 export const useFormAction = (
-  productDetails: any,
-  shoppingCart: any,
-  setShoppingCart: any
+  productDetails: Product,
+  shoppingCart: string[],
+  setShoppingCart: Dispatch<SetStateAction<string[]>>
 ) => {
   const [state, formAction] = useActionState((previousState, formData) => {
     const id = formData.get("id");
