@@ -41,7 +41,6 @@ export const DetailsPage = ({
   }
   return (
     <>
-      {state && <p>{state?.message}</p>}
       <form action={formAction}>
         <div className={styles.contentContainer}>
           <div className={styles.headingContainer}></div>
@@ -96,6 +95,11 @@ export const DetailsPage = ({
                     </g>
                   </svg>
                 </div>{" "}
+                <p>{state?.message}</p>
+              </div>
+            )}
+            {state?.type === "error" && (
+              <div className={styles.messagePopUp}>
                 <p>{state?.message}</p>
               </div>
             )}
@@ -178,20 +182,10 @@ const ProductOptions: FC<{ options: Option[]; available: boolean }> = ({
       )}
       {optionsDisplayed?.power && (
         <div>
+          Power:
           {
-            <select name="power" className={styles.select}>
-              {optionsDisplayed?.power?.map((powerOption, index) => {
-                if (index === 0)
-                  return (
-                    <option
-                      key={"Choose power:"}
-                      defaultValue={"Choose power:"}
-                      disabled
-                      selected
-                    >
-                      Choose power:
-                    </option>
-                  );
+            <select name="power" className={styles.select} required>
+              {optionsDisplayed?.power?.map((powerOption) => {
                 return (
                   <option key={powerOption} value={powerOption}>
                     {powerOption}
@@ -206,19 +200,8 @@ const ProductOptions: FC<{ options: Option[]; available: boolean }> = ({
         <div>
           storage:
           {
-            <select name="storage" className={styles.select}>
-              {optionsDisplayed?.storage?.map((storageOption, index) => {
-                if (index === 0)
-                  return (
-                    <option
-                      key={"Choose storage:"}
-                      defaultValue={"Choose storage:"}
-                      disabled
-                      hidden
-                    >
-                      Choose storage:
-                    </option>
-                  );
+            <select name="storage" className={styles.select} required>
+              {optionsDisplayed?.storage?.map((storageOption) => {
                 return (
                   <option key={storageOption} value={storageOption}>
                     {storageOption}
