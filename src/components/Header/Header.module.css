@@ -29,6 +29,8 @@
 .telephone {
   width: 20px;
   height: 20px;
+  text-decoration: none;
+  color: white;
 }
 
 .headingLink {
