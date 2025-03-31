@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState, type FC } from "react";
+import { Dispatch, SetStateAction, type FC } from "react";
 import styles from "./checkoutPage.module.css";
 import { getAllCheckoutItems } from "../../utils";
 import { CheckoutCard } from "./CheckoutCard";
