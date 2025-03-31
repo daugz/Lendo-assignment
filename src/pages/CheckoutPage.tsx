@@ -50,8 +50,10 @@ export const CheckoutPage: FC<CheckoutPage> = ({
           );
         })}
       </div>
-      <div>
-        <div className={styles.total}>Total: {getTotal()}</div>
+      <div className={styles.totalWrapper}>
+        <div className={styles.totalContainer}>
+          <div className={styles.total}>Total: {getTotal()}</div>
+        </div>
       </div>
     </div>
   );
