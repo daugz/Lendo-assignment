@@ -1,0 +1,129 @@
+.h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.checkOutCard {
+  box-shadow: 0 2px 12px 0 #00000026, 0 1px 2px 0 #00000040;
+  border-radius: 10px;
+  display: flex;
+  color: black;
+  padding-left: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  gap: 20px;
+}
+
+.imageContainer {
+  display: flex;
+  flex-shrink: 0;
+  width: 80px;
+}
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.infoContainer {
+  width: 100%;
+}
+.brandColorContainer {
+  display: flex;
+  gap: 5px;
+}
+.brand {
+  display: flex;
+}
+.colorContainer {
+  border-radius: 9999px;
+  min-width: 20px;
+  max-width: 20px;
+  width: 20px;
+  height: 20px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 5px;
+}
+.optionsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.removeButton {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: white;
+  border-radius: 9999px;
+  color: black;
+  padding: 10px;
+  margin-top: 10px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+/* Quantity */
+
+.quantityContainer {
+  display: flex;
+  flex-direction: row;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 9999px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+  width: 100%;
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
+}
+.amount {
+  width: 100%;
+  text-align: center;
+}
+.decrement {
+  all: unset;
+  width: 24px;
+  height: 24px;
+  background-image: Url("/Icons/minus-icon.svg");
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 999px;
+}
+.increment {
+  all: unset;
+  width: 24px;
+  height: 24px;
+  background-image: Url("/Icons/plus-icon.svg");
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.changeCart {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.disabledCartChanger {
+  opacity: 0.5;
+}
