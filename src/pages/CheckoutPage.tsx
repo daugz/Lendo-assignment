@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState, type FC } from "react";
 import styles from "./checkoutPage.module.css";
-import { findColor, getAllCheckoutItems, removeItem } from "../utils";
+import { findColor, getAllCheckoutItems, removeItemFromCart } from "../utils";
 import { CheckoutProduct } from "../types";
 
 type CheckoutPage = {
@@ -66,9 +66,8 @@ const CheckoutCard: FC<{
   setCartUpdated: Dispatch<SetStateAction<number>>;
 }> = ({ item, shoppingCart, setShoppingCart, setCartUpdated }) => {
   const [productCount, setProductCount] = useState(item?.count);
-
   const handleOnRemove = () => {
-    removeItem(item, shoppingCart, setShoppingCart);
+    removeItemFromCart(item, shoppingCart, setShoppingCart);
   };
   const handleOnDecrement = () => {
     if (item?.count > 1 && productCount > 1) {
