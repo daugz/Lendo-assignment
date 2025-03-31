@@ -1,17 +1,7 @@
-import { describe, test, expect, vi } from "vitest";
+import { describe, test, expect } from "vitest";
 import { findColor } from "./findColor";
 
-vi.mock("./styles.module.css", () => ({
-  default: {
-    red: "red",
-    white: "white",
-    green: "green",
-    black: "black",
-    orange: "orange",
-  },
-}));
-
-describe("findColor", () => {
+describe("Find the color and return a css-class", () => {
   test("Should return the correct class when a valid color is given", () => {
     // Given a valid color
     const color = "white";
