@@ -65,6 +65,7 @@
   border-style: solid;
   text-decoration: none;
   caret-color: transparent;
+  cursor: pointer;
 }
 
 .disabled {
