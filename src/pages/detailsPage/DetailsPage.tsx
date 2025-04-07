@@ -47,7 +47,7 @@ export const DetailsPage = ({
     }
   }, [state]);
 
-  const imgUrl = findProductImage(productDetails.name, productDetails.brand);
+  const imgUrl = findProductImage(productDetails?.name, productDetails?.brand);
 
   if (!productDetails) {
     <div>Could not find product</div>;
