@@ -11,7 +11,6 @@ type Card = {
 
 export const Card: FC<Card> = ({ product }) => {
   const imageUrl = findProductImage(product.name, product.brand);
-
   return (
     <li key={product?.id} className={styles.card}>
       <div className={styles.listContainer}>
