@@ -8,11 +8,11 @@ export const ProductList: FC<{ products: Product[] }> = ({ products }) => {
 
   return (
     products && (
-      <ol className={styles.orderedList}>
+      <ul className={styles.list}>
         {products.map((product: Product) => {
           return product && <Card key={product.id} product={product} />;
         })}
-      </ol>
+      </ul>
     )
   );
 };
