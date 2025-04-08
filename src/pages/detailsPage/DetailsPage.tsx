@@ -55,8 +55,8 @@ export const DetailsPage = ({
   return (
     <>
       <form action={formAction}>
-        <div className={styles.contentContainer}>
-          <div>
+        <div className={styles.container}>
+          <div className={styles.contentContainer}>
             <div className={styles.headingContainer}></div>
             <h1 className={styles.h1}>Details</h1>
             <div className={styles.imageContainer}>
