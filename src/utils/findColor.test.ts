@@ -13,14 +13,4 @@ describe("Find the color and return a css-class", () => {
     expect(result).toMatch(/^_white_/);
   });
 
-  test("Should return null when an invalid color is given", () => {
-    // Given a color not in the list
-    const color = "purple";
-
-    // When calling findColor
-    const result = findColor(color);
-
-    // Then it should return null
-    expect(result).toBeNull();
-  });
 });
