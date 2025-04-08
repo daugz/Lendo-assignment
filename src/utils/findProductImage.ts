@@ -17,6 +17,6 @@ export const findProductImage = (
     .replace("ö", "o")
     .toLowerCase();
 
-  const imageUrl = `/Products/${fixedProductName}-${fixedProductBrand}.png`;
+  const imageUrl = `/Products/${fixedProductBrand}/${fixedProductName}.png`;
   return imageUrl;
 };
