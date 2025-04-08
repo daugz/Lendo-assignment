@@ -1,9 +1,9 @@
 import { type FC } from "react";
-import { type Product } from "../../types";
+import { type Product } from "../../../../types";
 import styles from "./card.module.css";
 import Button from "../Buttons/Button";
 import { Available } from "../Availability/Availability";
-import { findProductImage } from "../../utils";
+import { findProductImage } from "../../../../utils";
 
 type Card = {
   product: Product;

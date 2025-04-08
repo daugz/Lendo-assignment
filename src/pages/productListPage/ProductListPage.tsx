@@ -1,4 +1,4 @@
-import { ProductList } from "../../components/ProductList/ProductList";
+import { ProductList } from "./components/ProductList/ProductList";
 import { type Product } from "../../types";
 import styles from "./productListPage.module.css";
 
