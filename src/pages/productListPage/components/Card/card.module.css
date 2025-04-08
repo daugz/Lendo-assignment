@@ -58,7 +58,7 @@
 
 .image {
   background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: contain;
   width: 100%;
   height: 200px;
   border-radius: 15px;
@@ -67,4 +67,7 @@
 .imageWrapper {
   /* margin-left: 5px;
   margin-right: 5px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

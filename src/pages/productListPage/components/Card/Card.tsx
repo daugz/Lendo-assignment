@@ -16,8 +16,8 @@ export const Card: FC<Card> = ({ product }) => {
       <div className={styles.listContainer}>
         <div className={styles.imageWrapper}>
           {imageUrl && <img className={styles.image} src={imageUrl} />}{" "}
-          <h2 className={styles.h2}>{product?.name}</h2>
         </div>
+        <h2 className={styles.h2}>{product?.name}</h2>
         <div>
           <Available Available={product.available} />
           <div className={styles.listItem}>
