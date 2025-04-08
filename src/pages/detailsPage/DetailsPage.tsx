@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { type Product } from "../../types";
 import { findProductImage } from "../../utils";
 import styles from "./detailspage.module.css";
-import { Available } from "../productListPage/components/Availability/Availability";
+import { Available } from "../../components";
 import {
   type FC,
   type Dispatch,
@@ -10,8 +10,8 @@ import {
   useState,
   useEffect,
 } from "react";
-import { useFormAction } from "./useFormAction";
-import { ProductOptions } from "./ProductOptions";
+import { useFormAction } from "./hooks";
+import { ProductOptions } from "./components";
 
 export const DetailsPage = ({
   products,

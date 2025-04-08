@@ -1,7 +1,7 @@
 import { type SetStateAction, type Dispatch, type FC } from "react";
 import styles from "./colorDisplay.module.css";
-import { type Option } from "../../types";
-import { findColor } from "../../utils";
+import { type Option } from "../../../../types";
+import { findColor } from "../../../../utils";
 
 export const ColorDisplay: FC<{
   option: Option;

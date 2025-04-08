@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction, useActionState } from "react";
-import type { Product } from "../../types";
+import type { Product } from "../../../types";
 
 export const useFormAction = (
   productDetails: Product,

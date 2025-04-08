@@ -19,7 +19,8 @@
 .imageContainer {
   display: flex;
   flex-shrink: 0;
-  width: 80px;
+  width: 160px;
+  object-fit: contain;
 }
 .image {
   width: 100%;
@@ -70,6 +71,7 @@
   border-style: solid;
   text-decoration: none;
   cursor: pointer;
+  max-width: 333px;
 }
 
 .bold {
@@ -90,9 +92,10 @@
   padding-top: 10px;
   padding-bottom: 10px;
   align-items: center;
-  width: 100%;
+
   max-width: -webkit-fill-available;
   max-width: -moz-available;
+  max-width: 333px;
 }
 .amount {
   width: 100%;
@@ -122,6 +125,11 @@
   display: flex;
   width: 100%;
   flex-direction: column;
+  max-width: 333px;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
 .disabledCartChanger {

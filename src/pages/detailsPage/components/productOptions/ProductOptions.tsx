@@ -1,7 +1,7 @@
-import { Option } from "../../types";
+import { Option } from "../../../../types";
 import styles from "./productOptions.module.css";
 import React, { type FC, useState } from "react";
-import { ColorDisplay } from "./ColorDisplay";
+import { ColorDisplay } from "../colorDisplay/ColorDisplay";
 
 export const ProductOptions: FC<{ options: Option[]; available: boolean }> = ({
   options,
