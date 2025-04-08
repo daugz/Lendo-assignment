@@ -34,7 +34,11 @@ export const CheckoutPage: FC<CheckoutPage> = ({
   return (
     <div className={styles.container}>
       <h1 className={styles.h1}>Checkout</h1>
-      <button onClick={handleOnClick}>Remove all items in cart</button>
+      {checkoutItems?.length > 0 && (
+        <button className={styles.removeAllButton} onClick={handleOnClick}>
+          Remove all items in cart
+        </button>
+      )}
 
       <div className={styles.checkoutCardContainer}>
         {checkoutItems.map((item) => {

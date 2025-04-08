@@ -1,6 +1,22 @@
 .h1 {
   text-align: center;
 }
+.removeAllButton {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  /* background-color: red; */
+
+  /* border-radius: 9999px; */
+  color: red;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* border-color: black;
+  border-width: 1px;
+  border-style: solid; */
+  text-decoration: none;
+}
 .checkoutCardContainer {
   display: flex;
   gap: 10px;

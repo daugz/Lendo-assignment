@@ -3,6 +3,9 @@
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .headingContainer {
@@ -41,6 +44,9 @@
   text-decoration: none;
   caret-color: transparent;
   cursor: pointer;
+  @media (min-width: 700px) {
+    max-width: 333px;
+  }
 }
 
 .disabled {
